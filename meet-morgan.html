@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#E5E1DD" />
+<title>Meet Morgan · Morgan Amos Realtor</title>
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="fonts.css" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+
+  /* Page intro */
+  .page-intro {
+    padding: clamp(40px, 7vw, 110px) var(--gutter) clamp(32px, 5vw, 80px);
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(28px, 6vw, 100px);
+    align-items: end;
+  }
+  .page-intro .left .crumbs {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+  }
+  .page-intro .left .crumbs span { padding: 0 8px; color: var(--accent); }
+  .page-intro h1 {
+    font-family: var(--display);
+    font-size: clamp(52px, 9vw, 140px);
+    line-height: 0.92;
+    margin: 0 0 24px;
+    letter-spacing: -0.005em;
+  }
+  .page-intro h1 em { font-family: var(--serif); font-style: italic; color: var(--accent-deep); }
+  .page-intro .lede {
+    font-family: var(--serif);
+    font-size: clamp(18px, 1.7vw, 26px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 36ch;
+    margin: 0;
+    font-style: italic;
+  }
+  .page-intro .right {
+    aspect-ratio: 4/5;
+    position: relative;
+  }
+  .page-intro .right .ph { position: absolute; inset: 0; }
+  .page-intro .meta {
+    position: absolute;
+    left: 14px; bottom: 14px;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 12px 16px;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    border-left: 2px solid var(--accent);
+  }
+  @media (min-width: 901px) {
+    .page-intro .meta { left: -32px; bottom: -32px; padding: 18px 22px; font-size: 10.5px; letter-spacing: 0.26em; }
+  }
+  @media (max-width: 900px) {
+    .page-intro { grid-template-columns: 1fr; }
+    .page-intro .right { order: -1; }
+  }
+
+  /* Story strip — quick proofs */
+  .proofs {
+    background: var(--ink);
+    color: var(--cream);
+    padding: clamp(36px, 5vw, 60px) var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .proof {
+    text-align: center;
+    padding: 6px 12px;
+    position: relative;
+  }
+  .proof + .proof::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 14%; bottom: 14%;
+    width: 1px; background: rgba(229,225,221,0.16);
+  }
+  .proof .num {
+    font-family: var(--display);
+    font-size: clamp(34px, 4.6vw, 72px);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .proof .num em { font-family: var(--serif); font-style: italic; color: var(--accent); }
+  .proof .lab {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(229,225,221,0.7);
+    line-height: 1.4;
+  }
+  @media (max-width: 720px) {
+    .proofs { grid-template-columns: 1fr 1fr; gap: 28px 0; }
+    .proof + .proof::before { display: none; }
+    .proof:nth-child(odd)::after {
+      content: ""; position: absolute; right: 0; top: 14%; bottom: 14%;
+      width: 1px; background: rgba(229,225,221,0.16);
+    }
+  }
+
+  /* Bio body */
+  .bio {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: clamp(28px, 6vw, 110px);
+    padding: clamp(48px, 8vw, 110px) var(--gutter);
+    border-top: 1px solid var(--hairline);
+  }
+  .bio__side {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-top: 4px;
+    position: sticky;
+    top: 100px;
+    align-self: start;
+    height: max-content;
+  }
+  .bio__side small { display: block; margin-top: 8px; color: var(--ink-mute); }
+  .bio__copy { max-width: 62ch; }
+  .bio__copy h2 {
+    font-family: var(--display);
+    font-size: clamp(30px, 4vw, 56px);
+    line-height: 1;
+    margin: 48px 0 22px;
+    letter-spacing: 0.005em;
+  }
+  .bio__copy h2:first-child { margin-top: 0; }
+  .bio__copy h2 em { font-family: var(--serif); font-style: italic; color: var(--accent-deep); }
+  .bio__copy p {
+    font-size: clamp(17px, 1.4vw, 21px);
+    line-height: 1.65;
+    margin: 0 0 20px;
+    color: var(--ink-soft);
+  }
+  .bio__copy p.lead { color: var(--ink); font-size: clamp(19px, 1.55vw, 24px); }
+  .bio__copy .pull {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 34px);
+    line-height: 1.3;
+    color: var(--ink);
+    border-left: 1px solid var(--accent);
+    padding: 6px 0 6px 24px;
+    margin: 32px 0;
+    max-width: 32ch;
+  }
+  @media (max-width: 800px) {
+    .bio { grid-template-columns: 1fr; }
+    .bio__side { position: static; }
+  }
+
+  /* Brookstone */
+  .brookstone {
+    padding: clamp(56px, 9vw, 130px) var(--gutter);
+    background: var(--paper);
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(28px, 6vw, 80px);
+    align-items: center;
+  }
+  .brookstone__copy h2 {
+    font-family: var(--display);
+    font-size: clamp(34px, 5.4vw, 80px);
+    line-height: 0.96;
+    margin: 0 0 28px;
+    letter-spacing: 0.002em;
+  }
+  .brookstone__copy h2 em { font-family: var(--serif); font-style: italic; color: var(--accent-deep); }
+  .brookstone__copy p {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.4vw, 21px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+  }
+  .brookstone__copy p strong { color: var(--ink); font-weight: 600; }
+  .brookstone__photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    aspect-ratio: 5/6;
+  }
+  .brookstone__photos .ph { width: 100%; height: 100%; position: relative; }
+  .brookstone__photos .a { grid-row: 1 / 3; }
+  @media (max-width: 800px) {
+    .brookstone { grid-template-columns: 1fr; }
+  }
+
+  /* Family strip */
+  .family {
+    padding: clamp(56px, 9vw, 130px) var(--gutter);
+  }
+  .family__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: clamp(32px, 5vw, 56px);
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .family__head h2 {
+    font-family: var(--display);
+    font-size: clamp(34px, 5vw, 80px);
+    line-height: 1;
+    margin: 0;
+  }
+  .family__head h2 em { font-family: var(--serif); font-style: italic; color: var(--accent-deep); }
+  .family__head p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(16px, 1.4vw, 19px);
+    max-width: 36ch;
+    margin: 0;
+    color: var(--ink-soft);
+  }
+  .family__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 280px 280px;
+    gap: 14px;
+  }
+  .family__grid .ph { width: 100%; height: 100%; position: relative; }
+  .family__grid > div:nth-child(1) { grid-row: 1 / 3; }
+  @media (max-width: 900px) {
+    .family__grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 200px);
+    }
+    .family__grid > div:nth-child(1) { grid-row: auto; }
+  }
+  @media (max-width: 500px) {
+    .family__grid { grid-template-rows: repeat(5, 200px); grid-template-columns: 1fr; gap: 10px; }
+  }
+
+  /* Recognitions */
+  .credentials {
+    background: var(--ink);
+    color: var(--cream);
+    padding: clamp(56px, 9vw, 130px) var(--gutter);
+  }
+  .credentials__head {
+    text-align: center;
+    margin-bottom: clamp(40px, 6vw, 72px);
+    max-width: 56ch;
+    margin-left: auto; margin-right: auto;
+  }
+  .credentials__head h2 {
+    font-family: var(--display);
+    font-size: clamp(34px, 5.4vw, 78px);
+    line-height: 1;
+    margin: 0 0 20px;
+  }
+  .credentials__head h2 em { font-family: var(--serif); font-style: italic; color: var(--accent); }
+  .credentials__head p {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.4vw, 19px);
+    color: rgba(229,225,221,0.78);
+    font-style: italic;
+  }
+  .credentials__list {
+    display: grid;
+    grid-template-columns: 60px 1fr 1.4fr;
+    border-top: 1px solid rgba(229,225,221,0.18);
+  }
+  .credentials__row { display: contents; }
+  .credentials__row > * {
+    padding: 22px 14px;
+    border-bottom: 1px solid rgba(229,225,221,0.14);
+    display: flex;
+    align-items: center;
+  }
+  .credentials__row .num {
+    font-family: var(--display);
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+  }
+  .credentials__row .title {
+    font-family: var(--display);
+    font-size: clamp(18px, 1.7vw, 26px);
+    line-height: 1.15;
+    color: var(--cream);
+  }
+  .credentials__row .desc {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: rgba(229,225,221,0.72);
+    line-height: 1.5;
+  }
+  @media (max-width: 700px) {
+    .credentials__list { grid-template-columns: 44px 1fr; }
+    .credentials__row > .desc { display: none; }
+    .credentials__row > * { padding: 18px 10px; }
+  }
+
+  /* Final CTA */
+  .finale {
+    text-align: center;
+    padding: clamp(72px, 12vw, 180px) var(--gutter);
+    background: var(--cream-light);
+  }
+  .finale h2 {
+    font-family: var(--display);
+    font-size: clamp(42px, 7vw, 110px);
+    line-height: 0.96;
+    margin: 0 0 28px;
+    text-wrap: balance;
+  }
+  .finale h2 em { font-family: var(--serif); font-style: italic; color: var(--accent-deep); }
+  .finale__phone {
+    font-family: var(--display);
+    font-size: clamp(24px, 3.4vw, 48px);
+    line-height: 1;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 8px;
+    display: inline-block;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    word-break: keep-all;
+  }
+  .finale__promise {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(17px, 1.4vw, 21px);
+    color: var(--ink-soft);
+    max-width: 40ch;
+    margin: 24px auto 0;
+    line-height: 1.5;
+  }
+
+  /* Signature, reused */
+  .signature {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(34px, 4vw, 46px);
+    line-height: 1;
+    color: var(--ink);
+    transform: rotate(-3deg);
+    letter-spacing: 0.005em;
+    background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 90%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding: 0 4px 6px;
+    border-bottom: 1px solid var(--ink);
+    display: inline-block;
+  }
+  .who {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .about__sign {
+    margin-top: 40px;
+    display: flex;
+    align-items: end;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  /* Pullquote — In her words */
+  .pullquote {
+    position: relative;
+    padding: clamp(64px, 10vw, 160px) var(--gutter);
+    background: var(--cream-light);
+    overflow: hidden;
+  }
+  .pullquote__mark {
+    position: absolute;
+    top: -40px; left: -20px;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: clamp(280px, 42vw, 680px);
+    line-height: 0.8;
+    color: var(--accent);
+    opacity: 0.18;
+    pointer-events: none;
+    user-select: none;
+  }
+  .pullquote__inner {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .pullquote__eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 32px;
+  }
+  .pullquote__text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(24px, 4.5vw, 60px);
+    line-height: 1.2;
+    margin: 0 0 36px;
+    color: var(--ink);
+    text-wrap: balance;
+    letter-spacing: -0.005em;
+  }
+  .pullquote__attr {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .pullquote__attr .name { color: var(--ink); font-weight: 500; }
+  .pullquote__attr .src {
+    color: var(--accent-deep);
+    font-style: italic;
+    font-family: var(--serif);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+  }
+
+  body[data-accent="gold"] { --accent: #A58D66; --accent-deep: #8a734f; }
+  body[data-accent="navy"] { --accent: #083A4F; --accent-deep: #083A4F; }
+  body[data-accent="teal"] { --accent: #407E8C; --accent-deep: #346874; }
+
+  /* Rooted in Columbus band */
+  .rooted {
+    padding: clamp(56px, 9vw, 130px) var(--gutter);
+    border-top: 1px solid var(--hairline);
+  }
+  .rooted__head { max-width: 60ch; margin: 0 0 clamp(30px, 4vw, 50px); }
+  .rooted__head h2 {
+    font-family: var(--display);
+    font-size: clamp(32px, 5vw, 72px);
+    line-height: 1;
+    margin: 0 0 18px;
+  }
+  .rooted__head h2 em { font-family: var(--serif); font-style: italic; color: var(--accent-deep); }
+  .rooted__head p {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.4vw, 20px);
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 54ch;
+  }
+  .rooted__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 14px;
+    height: clamp(280px, 34vw, 440px);
+  }
+  .rooted__grid .ph { position: relative; height: 100%; }
+  @media (max-width: 800px) {
+    .rooted__grid { grid-template-columns: 1fr 1fr; height: auto; grid-template-rows: 240px 240px; }
+    .rooted__grid .ph:first-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 520px) {
+    .rooted__grid { grid-template-columns: 1fr; grid-template-rows: repeat(3, 220px); }
+    .rooted__grid .ph:first-child { grid-column: auto; }
+  }
+</style>
+</head>
+<body data-accent="gold">
+
+<header class="masthead" id="masthead">
+  <div class="masthead__top">
+    <div class="masthead__meta masthead__brokerage">
+      <a href="https://kpdd.com" target="_blank" rel="noopener" aria-label="Coldwell Banker Kennon, Parker, Duncan &amp; Davis"><img src="uploads/coldwell-banker-kpdd.webp" alt="Coldwell Banker Kennon, Parker, Duncan &amp; Davis" /></a>
+    </div>
+    <div class="masthead__brand">
+      <a class="masthead__logo" href="index.html"><img src="uploads/morgan-logo.png" alt="Morgan Amos, Realtor&reg; — Your Home, My Priority" /></a>
+    </div>
+    <div class="masthead__right">
+      <a class="masthead__phone" href="tel:7068881865">(706) 888-1865</a>
+      <a class="masthead__cta" href="#contact">Get in touch</a>
+      <button class="masthead__menu" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="masthead__nav" id="navList">
+    <a href="index.html">Home</a>
+    <a href="meet-morgan.html" class="active">Meet Morgan</a>
+    <a href="buy.html">Buy</a>
+    <a href="sell.html">Sell</a>
+    <a href="listings.html">Listings</a>
+    <a href="index.html#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ============== PAGE INTRO ============== -->
+<header class="page-intro" data-screen-label="02 Meet Morgan">
+  <div class="left">
+    <div class="crumbs">Home <span>/</span> Meet Morgan</div>
+    <h1>Meet <em>Morgan</em>.</h1>
+    <p class="lede">
+      A Columbus native, a lifelong local, and a Realtor who has spent the last decade helping families across the area buy and sell their homes.
+    </p>
+  </div>
+  <div class="right">
+    <div class="ph is-photo"><img src="uploads/home-01-hero-portrait.jpg" alt="Morgan Amos, Realtor" style="object-position: center 25%;" /></div>
+    <div class="meta">Morgan Amos · Columbus, GA</div>
+  </div>
+</header>
+
+<!-- ============== QUICK PROOFS ============== -->
+<section class="proofs" data-screen-label="02 Meet Morgan · Proofs">
+  <div class="proof">
+    <div class="num">400<em>+</em></div>
+    <div class="lab">Homes sold since 2015</div>
+  </div>
+  <div class="proof">
+    <div class="num">200<em>+</em></div>
+    <div class="lab">Five-star reviews</div>
+  </div>
+  <div class="proof">
+    <div class="num">11</div>
+    <div class="lab">Years in real estate</div>
+  </div>
+  <div class="proof">
+    <div class="num"><em>GA &amp; AL</em></div>
+    <div class="lab">Licensed in both</div>
+  </div>
+</section>
+
+<!-- ============== BIO ============== -->
+<section class="bio" data-screen-label="02 Meet Morgan · Bio">
+  <aside class="bio__side">
+    HER STORY<br/>
+    <small>How this began.</small>
+  </aside>
+  <div class="bio__copy">
+    <p class="lead dropcap">
+      Morgan was born and raised right here in Columbus. She graduated from the University of Georgia in the spring of 2015 and earned her Georgia and Alabama real estate licenses that same year.
+    </p>
+    <p>
+      Over a decade later, she's still doing what she set out to do: helping families across the area buy and sell the homes they live their lives in.
+    </p>
+    <p>
+      Morgan and her husband Neal, her high school sweetheart, are raising their two daughters, Wells and Ella, just a few miles from the streets she grew up on. Neal is a co-owner of Southern Straws, a Columbus-based cheese straw company. Together, they're building the same kind of life here that they hope to help other families build.
+    </p>
+    <div class="about__sign">
+      <div class="signature">Morgan Amos</div>
+      <div class="who">
+        Morgan Amos<br/>
+        REALTOR® · Coldwell Banker KPDD
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== ROOTED IN COLUMBUS ============== -->
+<section class="rooted" data-screen-label="02 Meet Morgan · Rooted">
+  <div class="rooted__head">
+    <div class="kicker">Rooted here</div>
+    <h2>A life built in <em>Columbus</em>.</h2>
+    <p>From the campus where her family spends its weeks to the neighborhoods she works in every day, Morgan's life and her business share the same streets, the same schools, and the same people.</p>
+  </div>
+  <div class="rooted__grid">
+    <div class="ph is-photo"><img src="uploads/meet-04-carpool-morning.jpg" alt="Brookstone campus at golden hour" /></div>
+    <div class="ph is-photo"><img src="uploads/meet-03-brookstone-campus.jpg" alt="Commencement on the Brookstone campus" /></div>
+    <div class="ph is-photo"><img src="uploads/meet-02-family-on-porch.jpg" alt="A family at the door of their new home" /><span class="ph__cap">Home at last</span></div>
+  </div>
+</section>
+
+<!-- ============== IN HER WORDS (PULLQUOTE) ============== -->
+<section class="pullquote" data-screen-label="02 Meet Morgan · In Her Words" style="background: var(--cream-light);">
+  <div class="pullquote__mark">"</div>
+  <div class="pullquote__inner">
+    <div class="pullquote__eyebrow">★★★★★ &nbsp; In her words</div>
+    <p class="pullquote__text">
+      Real estate, to me, has never just been about a transaction. It's about helping someone find the place they're going to call home. That's a big responsibility, and I don't take it lightly.
+    </p>
+    <div class="pullquote__attr">
+      <span class="name">Morgan Amos</span>
+      <span>·</span>
+      <span class="src">REALTOR®</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== HOW SHE WORKS ============== -->
+<section class="brookstone" data-screen-label="02 Meet Morgan · How She Works">
+  <div class="brookstone__copy">
+    <div class="kicker">How she works</div>
+    <h2>An honest approach to a <em>personal decision</em>.</h2>
+    <p>
+      Buying or selling a home is one of the biggest decisions most people ever make. Morgan approaches it the same way every time: with honesty, preparation, and a deep familiarity with the Columbus market she's worked in for over a decade.
+    </p>
+    <p>
+      Whether her clients are listing the home they raised kids in or buying their first one, she brings the same level of care to every transaction.
+    </p>
+    <div style="margin-top: 28px;">
+      <a class="linklike" href="sell.html">More on selling with Morgan <span class="arr"></span></a>
+    </div>
+  </div>
+  <div class="brookstone__photos">
+    <div class="a"><div class="ph is-photo"><img src="uploads/sell-12-detail-porch-swing.jpg" alt="A welcoming front porch" /><span class="ph__cap">At the front door</span></div></div>
+    <div><div class="ph is-photo"><img src="uploads/sell-07-closing-table-keys.jpg" alt="Keys at the closing table" /><span class="ph__cap">Closing day</span></div></div>
+    <div><div class="ph is-photo"><img src="uploads/sell-02-living-room-morning.jpg" alt="Living room in morning light" /><span class="ph__cap">Walk-through</span></div></div>
+  </div>
+</section>
+
+<!-- ============== FAMILY ============== -->
+<!-- ============== RECOGNITIONS ============== -->
+<section class="credentials" data-screen-label="02 Meet Morgan · Recognition">
+  <div class="credentials__head">
+    <h2>Awards <em>&amp; honors</em>.</h2>
+    <p>A few of the recognitions Morgan has received over the course of her career.</p>
+  </div>
+  <div class="credentials__list">
+    <div class="credentials__row">
+      <div class="num">01</div>
+      <div class="title">International President's Elite Circle</div>
+      <div class="desc">Top 3% of Coldwell Banker agents internationally.</div>
+    </div>
+    <div class="credentials__row">
+      <div class="num">02</div>
+      <div class="title">Top 5% Overall Production</div>
+      <div class="desc">Coldwell Banker KPDD · 2019 to 2025.</div>
+    </div>
+    <div class="credentials__row">
+      <div class="num">03</div>
+      <div class="title">Circle of Excellence, Lifetime Member</div>
+      <div class="desc">Columbus Board of Realtors · 2016 to 2025.</div>
+    </div>
+    <div class="credentials__row">
+      <div class="num">04</div>
+      <div class="title">Pacesetters Award</div>
+      <div class="desc">Coldwell Banker KPDD · 2020 to 2025.</div>
+    </div>
+    <div class="credentials__row">
+      <div class="num">05</div>
+      <div class="title">Rookie of the Year</div>
+      <div class="desc">Columbus Board of Realtors · 2016.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FAMILY ============== -->
+<section class="family" data-screen-label="02 Meet Morgan · Off the Clock">
+  <div class="family__head">
+    <div>
+      <div class="kicker">Off the clock</div>
+      <h2>Family <em>first</em>.</h2>
+    </div>
+    <p>When she's not working, Morgan is at home with Neal, Wells, Ella, and their rescue, Bailey. The family loves their local church community, weekends at the beach, and the slow Columbus afternoons that come with being deeply rooted in one place.</p>
+  </div>
+  <div class="family__grid">
+    <div><div class="ph is-photo"><img src="uploads/meet-05-family-portrait.png" alt="The Amos family" /></div></div>
+    <div><div class="ph is-photo"><img src="uploads/meet-06-neal-southern-straws.jpg" alt="Neal with one of the girls" /></div></div>
+    <div><div class="ph is-photo"><img src="uploads/meet-07-backyard-late-summer.jpg" alt="The family in the garden" /></div></div>
+    <div><div class="ph is-photo"><img src="uploads/meet-08-sunday-morning.jpg" alt="The family on the steps" /></div></div>
+    <div><div class="ph is-photo"><img src="uploads/meet-09-sunday-morning.jpg" alt="A Sunday morning walk" /></div></div>
+  </div>
+</section>
+
+<!-- ============== FINAL CTA ============== -->
+<section class="finale" id="contact" data-screen-label="02 Meet Morgan · Contact">
+  <div class="kicker" style="justify-content:center;">Let's connect</div>
+  <h2>Get in <em>touch</em>.</h2>
+  <p class="finale__promise">Whether you have a quick question or you're ready to start the conversation, Morgan would love to hear from you.</p>
+  <a class="finale__phone" href="tel:7068881865">(706) 888-1865</a>
+  <div class="finale__or">
+    <a class="linklike" href="mailto:morgan.amos@kpdd.com">morgan.amos@kpdd.com <span class="arr"></span></a>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="footer">
+  <div class="cols">
+    <div class="brand">
+      <div class="logo-slot footer-logo has-art"><img src="uploads/morgan-logo-cream.png" alt="Morgan Amos, Realtor&reg;" /></div>
+      <p>REALTOR&reg; &middot; Coldwell Banker KPDD, Columbus, Georgia. Licensed in Georgia &amp; Alabama.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/morganamosrealtor" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/morganamosrealtor" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.5 8.2V6.6c0-.8.2-1.2 1.3-1.2h1.5V2.6C16.9 2.5 16 2.4 15 2.4c-2.4 0-4 1.5-4 4.1v1.7H8.4V11H11v10.6h3.5V11h2.6l.4-2.8z"/></svg></a>
+        <a href="https://share.google/FKAKElppMwVY8f7nb" target="_blank" rel="noopener" aria-label="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.2v3.9h5.4c-.24 1.4-1.7 4.1-5.4 4.1-3.25 0-5.9-2.7-5.9-6s2.65-6 5.9-6c1.85 0 3.1.79 3.8 1.47l2.6-2.5C16.7 2.99 14.6 2 12 2 6.95 2 2.9 6.05 2.9 11.1S6.95 20.2 12 20.2c5.05 0 8.4-3.55 8.4-8.55 0-.57-.06-1-.14-1.45H12z"/></svg></a>
+        <a href="https://www.zillow.com/profile/morganamos" target="_blank" rel="noopener" aria-label="Zillow"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2 3 8.3v2.55l3.05-2.05 2.45 3.05L3 15.5v6.3h18v-6.6l-6.05-3.6 2.6-3.25L21 10.85V8.3L12 2.2zm0 9.05 4.3 2.55v5.6H7.7v-5.35L12 11.25z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="meet-morgan.html">Meet Morgan</a></li>
+        <li><a href="buy.html">Buying a home</a></li>
+        <li><a href="sell.html">Selling a home</a></li>
+        <li><a href="listings.html">Active listings</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="tel:7068881865">(706) 888-1865</a></li>
+        <li><a href="mailto:morgan.amos@kpdd.com">morgan.amos@kpdd.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Brokerage</h5>
+      <div class="brokerage">
+        <div class="logo-slot cb-logo has-art"><img src="uploads/coldwell-banker-kpdd-white.png" alt="Coldwell Banker Kennon, Parker, Duncan & Davis" /></div>
+        <div class="office"><b>Office</b>Coldwell Banker KPDD<br/>5670 Whitesville Road<br/>Columbus, GA 31904</div>
+        <div class="office"><b>Office phone</b><a href="tel:7062561000">(706) 256-1000</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© <span id="year">2026</span> Morgan Amos Realtor</span>
+    <span><span class="eh">≡</span> &nbsp; Equal Housing Opportunity · GA 366248 · AL 138291</span>
+  </div>
+</footer>
+
+<!-- ============== MOBILE STICKY CALL BAR ============== -->
+<div class="callbar" aria-hidden="false">
+  <a href="tel:7068881865" class="primary">
+    <span class="ic">☎</span><span>Call Morgan</span>
+  </a>
+  <a href="sms:7068881865" class="ghost">
+    <span class="ic">✉</span><span>Text</span>
+  </a>
+</div>
+
+<script>
+  const nav = document.getElementById("masthead");
+  const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 40);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  const toggle = document.getElementById("navToggle");
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("nav-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    });
+    document.querySelectorAll("#navList a").forEach(a => {
+      a.addEventListener("click", () => {
+        nav.classList.remove("nav-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
+  const a = localStorage.getItem("morgan-accent");
+  if (a) document.body.setAttribute("data-accent", a);
+</script>
+
+</body>
+</html>

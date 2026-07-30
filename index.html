@@ -1,0 +1,1422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#E5E1DD" />
+<title>Morgan Amos · Realtor · Columbus, Georgia</title>
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="fonts.css" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  /* ---------- Homepage-specific ---------- */
+
+  /* HERO ============================================== */
+  .hero {
+    position: relative;
+    padding: clamp(32px, 6vw, 80px) var(--gutter) clamp(48px, 7vw, 100px);
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(28px, 6vw, 96px);
+    align-items: end;
+  }
+  @media (min-width: 941px) {
+    .hero { min-height: calc(100vh - 110px); }
+  }
+  .hero__left { display: flex; flex-direction: column; justify-content: flex-end; }
+  @media (min-width: 941px) {
+    .hero__left { min-height: 60vh; padding-bottom: 6px; }
+  }
+  .hero__eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .hero__eyebrow .star { color: var(--accent); letter-spacing: 1px; font-size: 12px; }
+  .hero__eyebrow .sep { color: var(--accent); }
+  .hero__headline {
+    font-family: var(--display);
+    font-size: clamp(48px, 9.5vw, 156px);
+    line-height: 0.92;
+    letter-spacing: -0.005em;
+    margin: 0 0 28px;
+    text-wrap: balance;
+  }
+  .hero__headline em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent-deep);
+  }
+  .hero__sub {
+    font-family: var(--serif);
+    font-size: clamp(18px, 1.6vw, 24px);
+    line-height: 1.5;
+    max-width: 44ch;
+    color: var(--ink-soft);
+    margin: 0 0 32px;
+    font-weight: 400;
+  }
+  .hero__sub b { font-weight: 600; color: var(--ink); font-variant-numeric: oldstyle-nums; }
+  .hero__row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .hero__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 24px;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    transition: background .25s var(--ease), gap .25s var(--ease);
+    min-height: 48px;
+  }
+  .hero__cta:hover { background: var(--accent-deep); gap: 18px; }
+  .hero__cta .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 999px; }
+  .hero__note {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-soft);
+    max-width: 22ch;
+  }
+  .hero__note b { font-style: normal; color: var(--ink); font-weight: 500; }
+
+  .hero__right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 360px;
+  }
+  @media (min-width: 941px) {
+    .hero__right { min-height: 540px; }
+  }
+  .hero__medallion {
+    position: relative;
+    width: min(100%, 430px);
+    aspect-ratio: 1;
+  }
+  @media (min-width: 941px) {
+    .hero__medallion { width: min(100%, 500px); }
+  }
+  /* soft brand halo so the portrait reads as intentionally set on the sand */
+  .hero__medallion::before {
+    content: "";
+    position: absolute; inset: -6%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 42%, var(--cream-light) 0%, rgba(255,255,255,0) 70%);
+    z-index: 0;
+  }
+  .hero__medallion img {
+    position: relative;
+    z-index: 1;
+    width: 100%; height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    filter: drop-shadow(0 26px 40px rgba(8,58,79,0.22));
+  }
+  .hero__caption { display: none; }
+  .hero__meta {
+    position: absolute;
+    left: 0; bottom: 6%;
+    z-index: 3;
+    background: var(--cream-light);
+    padding: 14px 18px;
+    border-left: 2px solid var(--accent);
+    box-shadow: 0 30px 60px -30px rgba(8,58,79,0.25);
+    max-width: 74%;
+  }
+  @media (min-width: 941px) {
+    .hero__meta { left: -30px; bottom: 10%; max-width: 280px; padding: 18px 22px; }
+  }
+  .hero__meta .label {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .hero__meta .quote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+
+  @media (max-width: 940px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero__caption { display: none; }
+  }
+
+  /* STAT MARQUEE ====================================== */
+  .marquee {
+    background: var(--ink);
+    color: var(--cream);
+    padding: clamp(40px, 5vw, 64px) var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat {
+    text-align: center;
+    padding: 6px 12px;
+    position: relative;
+  }
+  .stat + .stat::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 14%; bottom: 14%;
+    width: 1px; background: rgba(229,225,221,0.16);
+  }
+  .stat__num {
+    font-family: var(--display);
+    font-size: clamp(38px, 5.6vw, 84px);
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 10px;
+    letter-spacing: -0.005em;
+  }
+  .stat__num em { font-family: var(--serif); font-style: italic; color: var(--accent); font-weight: 400; }
+  .stat__label {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(229,225,221,0.7);
+    line-height: 1.4;
+  }
+  @media (max-width: 800px) {
+    .marquee { grid-template-columns: 1fr 1fr; gap: 32px 0; padding: 40px var(--gutter); }
+    .stat + .stat::before { display: none; }
+    .stat:nth-child(odd)::after {
+      content: "";
+      position: absolute;
+      right: 0; top: 14%; bottom: 14%;
+      width: 1px; background: rgba(229,225,221,0.16);
+    }
+  }
+
+  /* STORY (replaces 'about preview') ================== */
+  .story {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(32px, 7vw, 110px);
+    align-items: center;
+  }
+  .story__media {
+    position: relative;
+    aspect-ratio: 4/5;
+  }
+  .story__media .ph { position: absolute; inset: 0; }
+  .story__media .badge {
+    position: absolute;
+    right: 14px; top: 14px;
+    background: var(--cream-light);
+    color: var(--ink);
+    padding: 10px 14px;
+    border: 1px solid var(--accent);
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    box-shadow: 0 20px 40px -25px rgba(8,58,79,0.3);
+  }
+  @media (min-width: 901px) {
+    .story__media .badge { right: -22px; top: 28px; padding: 14px 20px; font-size: 10.5px; letter-spacing: 0.26em; }
+  }
+  .story__copy h2 {
+    font-family: var(--display);
+    font-size: clamp(36px, 5vw, 72px);
+    line-height: 1;
+    margin: 0 0 28px;
+    letter-spacing: 0.002em;
+  }
+  .story__copy h2 em { font-family: var(--serif); font-style: italic; color: var(--accent-deep); }
+  .story__copy p {
+    font-size: clamp(17px, 1.4vw, 20px);
+    line-height: 1.65;
+    margin: 0 0 18px;
+    color: var(--ink-soft);
+  }
+  .story__copy p.lead {
+    font-size: clamp(19px, 1.55vw, 23px);
+    color: var(--ink);
+  }
+  .story__sign {
+    margin-top: 32px;
+    display: flex;
+    align-items: end;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .signature {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(36px, 4vw, 46px);
+    line-height: 1;
+    color: var(--ink);
+    transform: rotate(-3deg);
+    letter-spacing: 0.005em;
+    background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 90%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding: 0 4px 6px;
+    border-bottom: 1px solid var(--ink);
+    display: inline-block;
+  }
+  .story__sign .who {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .story { grid-template-columns: 1fr; }
+  }
+
+  /* WHY MORGAN (3-up) ================================ */
+  .why {
+    background: var(--paper);
+  }
+  .why__head {
+    text-align: center;
+    max-width: 64ch;
+    margin: 0 auto clamp(40px, 5vw, 64px);
+  }
+  .why__head h2 {
+    font-family: var(--display);
+    font-size: clamp(36px, 5vw, 76px);
+    line-height: 1.05;
+    margin: 0 0 32px;
+    letter-spacing: 0.002em;
+  }
+  .why__head h2 em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--accent-deep);
+    white-space: nowrap;
+  }
+  .why__head p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(17px, 1.4vw, 21px);
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .why__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 3vw, 40px);
+  }
+  .why__card {
+    background: var(--cream-light);
+    padding: clamp(28px, 3vw, 44px);
+    border-top: 2px solid var(--accent);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .why__card .n {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--accent-deep);
+  }
+  .why__card h3 {
+    font-family: var(--display);
+    font-size: clamp(24px, 2.4vw, 34px);
+    line-height: 1.05;
+    margin: 0;
+    letter-spacing: 0.003em;
+  }
+  .why__card h3 em { font-family: var(--serif); font-style: italic; }
+  .why__card p {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  @media (max-width: 800px) {
+    .why__grid { grid-template-columns: 1fr; }
+  }
+
+  /* AWARDS ============================================ */
+  .awards { position: relative; }
+  .awards__head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+    margin-bottom: clamp(40px, 5vw, 72px);
+  }
+  .awards__head h2 {
+    font-family: var(--display);
+    font-size: clamp(36px, 5.2vw, 80px);
+    line-height: 1;
+    margin: 0;
+    color: var(--cream);
+  }
+  .awards__head h2 em { font-family: var(--serif); font-style: italic; color: var(--accent); }
+  .awards__head p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(17px, 1.4vw, 19px);
+    color: rgba(229,225,221,0.78);
+    line-height: 1.55;
+    max-width: 42ch;
+    margin: 0;
+  }
+  .awards__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(229,225,221,0.18);
+    border-left: 1px solid rgba(229,225,221,0.18);
+  }
+  .award {
+    padding: clamp(28px, 3vw, 42px) clamp(24px, 3vw, 38px) clamp(32px, 3vw, 46px);
+    border-right: 1px solid rgba(229,225,221,0.18);
+    border-bottom: 1px solid rgba(229,225,221,0.18);
+    position: relative;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+  }
+  .award__num {
+    font-family: var(--display);
+    font-size: 13px;
+    letter-spacing: 0.32em;
+    color: var(--accent);
+    margin-bottom: 22px;
+  }
+  .award__title {
+    font-family: var(--display);
+    font-size: clamp(22px, 2vw, 30px);
+    line-height: 1.1;
+    margin: 0 0 14px;
+    color: var(--cream);
+  }
+  .award__desc {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: rgba(229,225,221,0.72);
+    line-height: 1.55;
+    margin: 0;
+  }
+  @media (max-width: 900px) {
+    .awards__head { grid-template-columns: 1fr; gap: 18px; margin-bottom: 32px; }
+    .awards__grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 540px) {
+    .awards__grid { grid-template-columns: 1fr; }
+    .award { min-height: 0; padding: 28px 22px 32px; }
+  }
+
+  /* FEATURED PULLQUOTE =============================== */
+  .pullquote {
+    position: relative;
+    padding: clamp(64px, 10vw, 160px) var(--gutter);
+    background: var(--cream-light);
+    overflow: hidden;
+  }
+  .pullquote__mark {
+    position: absolute;
+    top: -40px; left: -20px;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: clamp(280px, 42vw, 680px);
+    line-height: 0.8;
+    color: var(--accent);
+    opacity: 0.18;
+    pointer-events: none;
+    user-select: none;
+  }
+  .pullquote__inner {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .pullquote__eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+  .pullquote__text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(24px, 4.5vw, 60px);
+    line-height: 1.2;
+    margin: 0 0 36px;
+    color: var(--ink);
+    text-wrap: balance;
+    letter-spacing: -0.005em;
+  }
+  .pullquote__attr {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .pullquote__attr .name { color: var(--ink); font-weight: 500; }
+  .pullquote__attr .src {
+    color: var(--accent-deep);
+    font-style: italic;
+    font-family: var(--serif);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+  }
+
+  /* REVIEWS WALL ====================================== */
+  .reviews__head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: 28px;
+    margin-bottom: clamp(36px, 5vw, 56px);
+  }
+  .reviews__head h2 { margin: 0; }
+  .reviews__head .src {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .reviews__head .src .star { color: var(--accent); letter-spacing: 2px; font-size: 13px; }
+  @media (max-width: 800px) {
+    .reviews__head { grid-template-columns: 1fr; gap: 14px; }
+  }
+
+  .reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2vw, 28px);
+  }
+  .review {
+    background: var(--cream-light);
+    padding: 28px 26px 24px;
+    border: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform .35s var(--ease), border-color .35s var(--ease);
+  }
+  .review:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .review__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .review__source {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .review__source b { color: var(--accent-deep); font-weight: 600; }
+  .review__stars { color: var(--accent); letter-spacing: 2px; font-size: 13px; }
+  .review__body {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+    font-style: italic;
+  }
+  .review__by {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--hairline);
+  }
+  @media (max-width: 900px) {
+    .reviews__grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .reviews__grid { grid-template-columns: 1fr; }
+  }
+
+  .reviews__foot {
+    margin-top: clamp(36px, 5vw, 56px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--hairline);
+    padding-top: 24px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .reviews__foot .src {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* LIVE LISTINGS ===================================== */
+  .listings__head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: 28px;
+    margin-bottom: clamp(36px, 5vw, 56px);
+  }
+  .listings__head h2 { margin: 0; }
+  .listings__head .ml {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .listings__head .ml .pulse {
+    width: 8px; height: 8px; border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 var(--accent);
+    animation: pulse 2.2s var(--ease) infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(52,79,98,0.55); }
+    70% { box-shadow: 0 0 0 12px rgba(52,79,98,0); }
+    100% { box-shadow: 0 0 0 0 rgba(52,79,98,0); }
+  }
+  @media (max-width: 800px) {
+    .listings__head { grid-template-columns: 1fr; gap: 14px; }
+  }
+
+  .listings__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(22px, 3vw, 40px);
+  }
+  .lcard {
+    display: flex; flex-direction: column;
+    cursor: pointer;
+  }
+  .lcard__img {
+    aspect-ratio: 4/5;
+    margin-bottom: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .lcard__img .ph { position: absolute; inset: 0; transition: transform .8s var(--ease); }
+  .lcard:hover .lcard__img .ph { transform: scale(1.04); }
+  .lcard__tag {
+    position: absolute;
+    top: 14px; left: 14px;
+    z-index: 2;
+    background: var(--cream-light);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border-radius: 0;
+    white-space: nowrap;
+  }
+  .lcard__tag--gold { background: var(--accent); color: var(--cream); }
+  .lcard__tag--pending { background: var(--sage); color: var(--ink); }
+  .lcard__tag--sold { background: var(--taupe); color: var(--ink); }
+  .lcard__address {
+    font-family: var(--display);
+    font-size: clamp(20px, 1.8vw, 28px);
+    line-height: 1.1;
+    margin: 0 0 6px;
+    letter-spacing: 0.005em;
+  }
+  .lcard__line2 {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .lcard__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px solid var(--hairline);
+    padding-top: 12px;
+    margin-top: auto;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .lcard__price {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .lcard__specs {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .lcard__specs span { padding: 0 4px; opacity: 0.5; }
+
+  .listings__empty {
+    text-align: center;
+    padding: clamp(48px, 8vw, 80px) 20px;
+    border: 1px solid var(--hairline);
+    background: var(--cream-light);
+  }
+  .listings__empty h3 {
+    font-family: var(--display);
+    font-size: clamp(28px, 4vw, 56px);
+    margin: 0 0 16px;
+  }
+  .listings__empty h3 em { font-family: var(--serif); font-style: italic; color: var(--accent-deep); }
+  .listings__empty p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(16px, 1.3vw, 19px);
+    color: var(--ink-soft);
+    max-width: 46ch;
+    margin: 0 auto 28px;
+    line-height: 1.55;
+  }
+
+  .listings__foot {
+    margin-top: clamp(40px, 5vw, 64px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--hairline);
+    padding-top: 24px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .listings__foot .src {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 900px) {
+    .listings__grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+  }
+  @media (max-width: 580px) {
+    .listings__grid { grid-template-columns: 1fr; }
+  }
+
+  /* SERVICES SPLIT ==================================== */
+  .services {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+  }
+  .service {
+    padding: clamp(52px, 7vw, 110px) clamp(24px, 5vw, 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .service--sell { background: var(--ink); color: var(--cream); }
+  .service--buy  { background: var(--paper); color: var(--ink); }
+  .service__tag {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .service--buy .service__tag { color: var(--accent-deep); }
+  .service__h {
+    font-family: var(--display);
+    font-size: clamp(36px, 5vw, 84px);
+    line-height: 0.98;
+    margin: 14px 0 0;
+    letter-spacing: 0.002em;
+  }
+  .service__h em { font-family: var(--serif); font-style: italic; }
+  .service__body {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.4vw, 19px);
+    line-height: 1.6;
+    max-width: 38ch;
+    margin: 0;
+    opacity: 0.85;
+  }
+  .service__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .service__list li {
+    font-family: var(--serif);
+    font-size: 16px;
+    padding-left: 34px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .service__list li::before {
+    content: attr(data-n);
+    position: absolute;
+    left: 0; top: 2px;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    opacity: 0.9;
+  }
+  .service__cta {
+    align-self: flex-start;
+  }
+
+  @media (max-width: 900px) {
+    .services { grid-template-columns: 1fr; }
+  }
+
+  /* FINAL CTA ========================================= */
+  .finale {
+    text-align: center;
+    padding: clamp(72px, 12vw, 180px) var(--gutter);
+    background: var(--cream-light);
+    position: relative;
+    overflow: hidden;
+  }
+  .finale h2 {
+    font-family: var(--display);
+    font-size: clamp(44px, 9vw, 156px);
+    line-height: 0.95;
+    margin: 0 0 32px;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+  .finale h2 em { font-family: var(--serif); font-style: italic; color: var(--accent-deep); }
+  .finale__phone {
+    font-family: var(--display);
+    font-size: clamp(24px, 3.6vw, 56px);
+    line-height: 1;
+    margin: 28px 0 16px;
+    letter-spacing: 0.01em;
+    display: inline-block;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 8px;
+    transition: color .3s var(--ease), border-color .3s var(--ease);
+    white-space: nowrap;
+    word-break: keep-all;
+  }
+  .finale__phone:hover { color: var(--accent-deep); border-color: var(--accent-deep); }
+  .finale__promise {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(17px, 1.5vw, 23px);
+    color: var(--ink-soft);
+    max-width: 40ch;
+    margin: 16px auto 0;
+    line-height: 1.5;
+  }
+  .finale__or {
+    margin-top: 44px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .finale__or a {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+  .finale__or .sep { color: var(--ink-soft); opacity: 0.4; }
+  @media (max-width: 540px) {
+    .finale__or { flex-direction: column; gap: 16px; align-items: center; }
+    .finale__or .sep { display: none; }
+  }
+
+  /* Social row + brand sign-off */
+  .hero__social {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+  }
+  .hero__social .lab {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-right: 4px;
+  }
+  .hero__social a {
+    width: 42px; height: 42px;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+  }
+  .hero__social a svg { width: 18px; height: 18px; display: block; }
+  .hero__social a:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+  .finale__brand {
+    max-width: 320px;
+    margin: 0 auto 28px;
+  }
+  .finale__social {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 36px;
+  }
+  .finale__social a {
+    width: 46px; height: 46px;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--ink-soft);
+    transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+  }
+  .finale__social a svg { width: 20px; height: 20px; display: block; }
+  .finale__social a:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+  /* Tweak overrides for accent */
+  body[data-accent="gold"] { --accent: #A58D66; --accent-deep: #8a734f; }
+  body[data-accent="navy"] { --accent: #083A4F; --accent-deep: #083A4F; }
+  body[data-accent="teal"] { --accent: #407E8C; --accent-deep: #346874; }
+
+  .ph__shot {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+  }
+</style>
+</head>
+<body data-accent="gold">
+
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <rect width="100" height="100" fill="#1b2a4a"/>
+    <text x="50" y="50" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-style="italic" fill="#c8a24c" text-anchor="middle" dominant-baseline="central" letter-spacing="1">MA</text>
+    <text x="50" y="72" font-family="Georgia, serif" font-size="7" fill="#c8a24c" text-anchor="middle" dominant-baseline="central" letter-spacing="3">REALTOR</text>
+  </svg>
+</template>
+
+<!-- ============== MASTHEAD ============== -->
+<header class="masthead" id="masthead">
+  <div class="masthead__top">
+    <div class="masthead__meta masthead__brokerage">
+      <a href="https://kpdd.com" target="_blank" rel="noopener" aria-label="Coldwell Banker Kennon, Parker, Duncan &amp; Davis"><img src="uploads/coldwell-banker-kpdd.webp" alt="Coldwell Banker Kennon, Parker, Duncan &amp; Davis" /></a>
+    </div>
+    <div class="masthead__brand">
+      <a class="masthead__logo" href="index.html"><img src="uploads/morgan-logo.png" alt="Morgan Amos, Realtor&reg; — Your Home, My Priority" /></a>
+    </div>
+    <div class="masthead__right">
+      <a class="masthead__phone" href="tel:7068881865">(706) 888-1865</a>
+      <a class="masthead__cta" href="#contact">Get in touch</a>
+      <button class="masthead__menu" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="masthead__nav" id="navList">
+    <a href="index.html" class="active">Home</a>
+    <a href="meet-morgan.html">Meet Morgan</a>
+    <a href="buy.html">Buy</a>
+    <a href="sell.html">Sell</a>
+    <a href="listings.html">Listings</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ============== HERO ============== -->
+<header class="hero" data-screen-label="01 Home">
+  <div class="hero__left">
+    <div>
+      <p class="hero__eyebrow">
+        <span class="star">★★★★★</span>
+        <span>200+ Five-Star Reviews</span>
+        <span class="sep">·</span>
+        <span>Columbus, GA</span>
+      </p>
+      <h1 class="hero__headline">Your home,<br/><em>my priority.</em></h1>
+      <p class="hero__sub">
+        Morgan Amos is a licensed Realtor helping families buy and sell homes across Georgia and Alabama.
+      </p>
+      <div class="hero__row">
+        <a class="hero__cta" href="#contact">
+          <span class="dot"></span>
+          <span>Start the conversation</span>
+          <span class="arr"></span>
+        </a>
+        <p class="hero__note">
+          Or call <b>(706) 888-1865</b>.
+        </p>
+      </div>
+      <div class="hero__social">
+        <span class="lab">Follow along</span>
+        <a href="https://www.instagram.com/morganamosrealtor" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/morganamosrealtor" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.5 8.2V6.6c0-.8.2-1.2 1.3-1.2h1.5V2.6C16.9 2.5 16 2.4 15 2.4c-2.4 0-4 1.5-4 4.1v1.7H8.4V11H11v10.6h3.5V11h2.6l.4-2.8z"/></svg></a>
+        <a href="https://share.google/FKAKElppMwVY8f7nb" target="_blank" rel="noopener" aria-label="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.2v3.9h5.4c-.24 1.4-1.7 4.1-5.4 4.1-3.25 0-5.9-2.7-5.9-6s2.65-6 5.9-6c1.85 0 3.1.79 3.8 1.47l2.6-2.5C16.7 2.99 14.6 2 12 2 6.95 2 2.9 6.05 2.9 11.1S6.95 20.2 12 20.2c5.05 0 8.4-3.55 8.4-8.55 0-.57-.06-1-.14-1.45H12z"/></svg></a>
+        <a href="https://www.zillow.com/profile/morganamos" target="_blank" rel="noopener" aria-label="Zillow"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.4 2.6 10.6c-.45.35-.2 1.05.35 1.05H4.8v8.3c0 .55.45 1 1 1h3.4v-5.2h3.6v5.2h3.4c.55 0 1-.45 1-1v-8.3h1.85c.55 0 .8-.7.35-1.05L12 3.4z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__right">
+    <div class="hero__medallion">
+      <img src="uploads/morgan-cutout.png" alt="Morgan Amos, Realtor in Columbus, Georgia" />
+    </div>
+    <div class="hero__meta">
+      <div class="quote">A decade helping families find home.</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============== STAT MARQUEE ============== -->
+<section class="marquee" data-screen-label="01 Home · Stats">
+  <div class="stat">
+    <div class="stat__num">400<em>+</em></div>
+    <div class="stat__label">Homes sold since 2015</div>
+  </div>
+  <div class="stat">
+    <div class="stat__num">200<em>+</em></div>
+    <div class="stat__label">Five-star reviews</div>
+  </div>
+  <div class="stat">
+    <div class="stat__num">11</div>
+    <div class="stat__label">Years in real estate</div>
+  </div>
+  <div class="stat">
+    <div class="stat__num"><em>GA &amp; AL</em></div>
+    <div class="stat__label">Licensed in both</div>
+  </div>
+</section>
+
+<!-- ============== STORY ============== -->
+<section class="section story" data-screen-label="01 Home · Story">
+  <div class="story__media">
+    <div class="ph is-photo">
+      <img src="uploads/home-02-morgan-at-home.jpg" alt="Morgan working over coffee" />
+    </div>
+    <div class="badge">Est. Columbus</div>
+  </div>
+
+  <div class="story__copy">
+    <div class="kicker">A note from Morgan</div>
+    <h2>Hi, I'm <em>Morgan</em>.</h2>
+    <p class="lead">
+      I'm a Columbus girl, born and raised. I went to UGA, came home, married my high school sweetheart, Neal, and started selling real estate in 2015.
+    </p>
+    <p>
+      Eleven years later, Neal and I are raising our two girls, Wells and Ella, in the same city we grew up in.
+    </p>
+    <p>
+      Real estate, for me, has always been about more than selling houses. It's about helping a family land somewhere they can build a life. That's the part I take seriously, and it's the part that's kept me doing this for over a decade.
+    </p>
+    <div class="story__sign">
+      <div class="signature">Morgan Amos</div>
+      <div class="who">
+        Morgan Amos<br/>
+        REALTOR® · Coldwell Banker KPDD
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FEATURED TESTIMONIAL ============== -->
+<section class="pullquote" data-screen-label="01 Home · Featured Testimonial">
+  <div class="pullquote__mark">"</div>
+  <div class="pullquote__inner">
+    <div class="pullquote__eyebrow">★★★★★ &nbsp;&mdash;&nbsp; A recent client</div>
+    <p class="pullquote__text">
+      We trusted her judgment so well that after meeting with her only once, we listed our home with her and she sold it for over asking in a matter of days.
+    </p>
+    <div class="pullquote__attr">
+      <span class="name">Kate Woodward</span>
+      <span>·</span>
+      <span>Columbus, GA</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== REVIEWS WALL ============== -->
+<section class="section" data-screen-label="01 Home · Reviews" id="reviews">
+  <div class="reviews__head">
+    <h2 class="section-title" style="margin:0">Two hundred families.<br/>Eleven years. <em style="font-family:var(--serif);font-style:italic;color:var(--accent-deep);">One Realtor</em> they keep coming back to.</h2>
+    <div class="src">
+      <span class="star">★★★★★</span>
+      <span>A glimpse at what clients have said about working with Morgan over the years.</span>
+    </div>
+  </div>
+
+  <div class="reviews__grid" id="reviews-grid">
+    <article class="review">
+      <div class="review__top">
+        <span class="review__source"><b>Zillow</b></span>
+        <span class="review__stars">★★★★★</span>
+      </div>
+      <p class="review__body">"Morgan helped us buy our home in 2020 and several years later sell our home. We knew Morgan would be the one to help us sell after our experience the first time around."</p>
+      <div class="review__by">Lindsey Logan · Columbus, GA</div>
+    </article>
+    <article class="review">
+      <div class="review__top">
+        <span class="review__source"><b>Google</b></span>
+        <span class="review__stars">★★★★★</span>
+      </div>
+      <p class="review__body">"Morgan was fantastic to work with and a huge asset in buying my wife and I's first home. We needed to act quickly to secure a home that checked all our boxes."</p>
+      <div class="review__by">Ben Cason · Midland, GA</div>
+    </article>
+    <article class="review">
+      <div class="review__top">
+        <span class="review__source"><b>Realtor.com</b></span>
+        <span class="review__stars">★★★★★</span>
+      </div>
+      <p class="review__body">"Morgan is the best real estate agent we have ever had. If you are in the market, look no further, they don't come any better than Morgan."</p>
+      <div class="review__by">Danielle B. · Brookstone, Columbus, GA</div>
+    </article>
+  </div>
+
+  <div class="reviews__foot">
+    <span class="src">Real reviews from Zillow · Google · Realtor.com</span>
+    <a class="linklike" href="https://www.zillow.com/profile/morganamos" target="_blank" rel="noopener">Read all reviews <span class="arr"></span></a>
+  </div>
+</section>
+
+<!-- ============== SERVICES SPLIT ============== -->
+<section class="services" data-screen-label="01 Home · Services">
+  <div class="service service--sell">
+    <div>
+      <div class="service__tag">What Morgan does</div>
+      <h2 class="service__h">Selling<br/><em>a home.</em></h2>
+    </div>
+    <p class="service__body">
+      Morgan represents sellers across Columbus and the surrounding area with care, market expertise, and a thoughtful approach to marketing every home she lists.
+    </p>
+    <a class="linklike" href="sell.html" style="color:var(--cream); border-color:var(--cream);">Learn more about selling <span class="arr"></span></a>
+  </div>
+
+  <div class="service service--buy">
+    <div>
+      <div class="service__tag">What Morgan does</div>
+      <h2 class="service__h">Buying<br/><em>a home.</em></h2>
+    </div>
+    <p class="service__body">
+      Whether you're a first-time buyer, a growing family, or relocating to Columbus, Morgan walks alongside her clients to help them find the right home in the right neighborhood.
+    </p>
+    <a class="linklike" href="buy.html">Learn more about buying <span class="arr"></span></a>
+  </div>
+</section>
+
+<!-- ============== LIVE LISTINGS ============== -->
+<section class="section section--cream-light" data-screen-label="01 Home · Listings" id="listings-section">
+  <div class="listings__head">
+    <h2 class="section-title" style="margin:0">Currently <em style="font-family:var(--serif);font-style:italic;color:var(--accent-deep);">on the market</em>.</h2>
+    <div class="ml">
+      <span class="pulse"></span>
+      <span>Live · Coldwell Banker KPDD</span>
+      <span class="feed-status" id="feed-status"></span>
+      <button class="feed-refresh" id="feed-refresh" type="button">Refresh</button>
+    </div>
+  </div>
+
+  <div id="listings-mount"></div>
+
+  <div class="listings__foot">
+    <span class="src">Source · kpdd.com</span>
+    <a class="linklike" href="listings.html">View all listings <span class="arr"></span></a>
+  </div>
+</section>
+
+<!-- ============== FINAL CTA ============== -->
+<section class="finale" id="contact" data-screen-label="01 Home · Contact">
+  <div class="logo-slot finale__brand has-art"><img src="uploads/morgan-logo.png" alt="Morgan Amos, Realtor&reg;" /></div>
+  <div class="kicker" style="justify-content:center;">Get in touch</div>
+  <h2>Let's talk about<br/>your <em>next move</em>.</h2>
+  <p class="finale__promise">
+    Whether you're ready to list, just starting to look, or somewhere in between, Morgan would love to hear from you.
+  </p>
+  <a class="finale__phone" href="tel:7068881865">(706) 888-1865</a>
+  <div class="finale__or">
+    <a class="linklike" href="mailto:morgan.amos@kpdd.com">morgan.amos@kpdd.com <span class="arr"></span></a>
+  </div>
+  <div class="finale__social">
+    <a href="https://www.instagram.com/morganamosrealtor" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://www.facebook.com/morganamosrealtor" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.5 8.2V6.6c0-.8.2-1.2 1.3-1.2h1.5V2.6C16.9 2.5 16 2.4 15 2.4c-2.4 0-4 1.5-4 4.1v1.7H8.4V11H11v10.6h3.5V11h2.6l.4-2.8z"/></svg></a>
+    <a href="https://share.google/FKAKElppMwVY8f7nb" target="_blank" rel="noopener" aria-label="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.2v3.9h5.4c-.24 1.4-1.7 4.1-5.4 4.1-3.25 0-5.9-2.7-5.9-6s2.65-6 5.9-6c1.85 0 3.1.79 3.8 1.47l2.6-2.5C16.7 2.99 14.6 2 12 2 6.95 2 2.9 6.05 2.9 11.1S6.95 20.2 12 20.2c5.05 0 8.4-3.55 8.4-8.55 0-.57-.06-1-.14-1.45H12z"/></svg></a>
+    <a href="https://www.zillow.com/profile/morganamos" target="_blank" rel="noopener" aria-label="Zillow"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.4 2.6 10.6c-.45.35-.2 1.05.35 1.05H4.8v8.3c0 .55.45 1 1 1h3.4v-5.2h3.6v5.2h3.4c.55 0 1-.45 1-1v-8.3h1.85c.55 0 .8-.7.35-1.05L12 3.4z"/></svg></a>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="footer" data-screen-label="01 Home · Footer">
+  <div class="cols">
+    <div class="brand">
+      <div class="logo-slot footer-logo has-art"><img src="uploads/morgan-logo-cream.png" alt="Morgan Amos, Realtor&reg;" /></div>
+      <p>REALTOR&reg; &middot; Coldwell Banker KPDD, Columbus, Georgia. Licensed in Georgia &amp; Alabama.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/morganamosrealtor" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/morganamosrealtor" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.5 8.2V6.6c0-.8.2-1.2 1.3-1.2h1.5V2.6C16.9 2.5 16 2.4 15 2.4c-2.4 0-4 1.5-4 4.1v1.7H8.4V11H11v10.6h3.5V11h2.6l.4-2.8z"/></svg></a>
+        <a href="https://share.google/FKAKElppMwVY8f7nb" target="_blank" rel="noopener" aria-label="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.2v3.9h5.4c-.24 1.4-1.7 4.1-5.4 4.1-3.25 0-5.9-2.7-5.9-6s2.65-6 5.9-6c1.85 0 3.1.79 3.8 1.47l2.6-2.5C16.7 2.99 14.6 2 12 2 6.95 2 2.9 6.05 2.9 11.1S6.95 20.2 12 20.2c5.05 0 8.4-3.55 8.4-8.55 0-.57-.06-1-.14-1.45H12z"/></svg></a>
+        <a href="https://www.zillow.com/profile/morganamos" target="_blank" rel="noopener" aria-label="Zillow"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.4 2.6 10.6c-.45.35-.2 1.05.35 1.05H4.8v8.3c0 .55.45 1 1 1h3.4v-5.2h3.6v5.2h3.4c.55 0 1-.45 1-1v-8.3h1.85c.55 0 .8-.7.35-1.05L12 3.4z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="meet-morgan.html">Meet Morgan</a></li>
+        <li><a href="buy.html">Buying a home</a></li>
+        <li><a href="sell.html">Selling a home</a></li>
+        <li><a href="listings.html">Active listings</a></li>
+        <li><a href="#reviews">Testimonials</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="tel:7068881865">(706) 888-1865</a></li>
+        <li><a href="mailto:morgan.amos@kpdd.com">morgan.amos@kpdd.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Brokerage</h5>
+      <div class="brokerage">
+        <div class="logo-slot cb-logo has-art"><img src="uploads/coldwell-banker-kpdd-white.png" alt="Coldwell Banker Kennon, Parker, Duncan & Davis" /></div>
+        <div class="office"><b>Office</b>Coldwell Banker KPDD<br/>5670 Whitesville Road<br/>Columbus, GA 31904</div>
+        <div class="office"><b>Office phone</b><a href="tel:7062561000">(706) 256-1000</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© <span id="year">2026</span> Morgan Amos Realtor</span>
+    <span><span class="eh">≡</span> &nbsp; Equal Housing Opportunity · GA 366248 · AL 138291</span>
+  </div>
+</footer>
+
+<!-- ============== MOBILE STICKY CALL BAR ============== -->
+<div class="callbar" aria-hidden="false">
+  <a href="tel:7068881865" class="primary">
+    <span class="ic">☎</span><span>Call Morgan</span>
+  </a>
+  <a href="sms:7068881865" class="ghost">
+    <span class="ic">✉</span><span>Text</span>
+  </a>
+</div>
+
+<!-- ============== LIVE LISTINGS (KPDD FEED) ============== -->
+<script src="feeds.js"></script>
+<script>
+(function () {
+  var mount = document.getElementById("listings-mount");
+  var statusEl = document.getElementById("feed-status");
+  var refreshBtn = document.getElementById("feed-refresh");
+  if (!mount) return;
+
+  var TAGS = {
+    active:  { label: "For Sale", cls: "gold",    kicker: "Now on the market" },
+    pending: { label: "Pending",  cls: "pending", kicker: "Under contract \u00b7 still available" }
+  };
+
+  function panel(html) { mount.innerHTML = '<div class="listings__empty">' + html + '</div>'; }
+
+  function media(l) {
+    if (!l.imgSrc) return '<div class="ph"><span class="ph__tag">Listing photo</span></div>';
+    return '<div class="ph is-photo" role="img" aria-label="' + l.address + '">' +
+      '<div class="ph__shot" style="background-image:url(&quot;' + l.imgSrc + '&quot;)"></div>' +
+    '</div>';
+  }
+
+  function featureCard(l) {
+    var t = TAGS[l.status] || TAGS.active;
+    return '<div class="lfeature">' +
+      '<a class="lfeature__media" href="' + l.href + '" target="_blank" rel="noopener">' +
+        '<span class="lfeature__tag lfeature__tag--' + t.cls + '">' + t.label + '</span>' +
+        media(l) +
+      '</a>' +
+      '<div class="lfeature__body">' +
+        '<div class="lfeature__kicker">' + t.kicker + '</div>' +
+        '<h3 class="lfeature__address">' + l.address + '</h3>' +
+        (l.area ? '<div class="lfeature__area">' + l.area + '</div>' : "") +
+        (l.price ? '<div class="lfeature__price">' + l.price + '</div>' : "") +
+        (l.listedLabel ? '<div class="lfeature__listed">Listed ' + l.listedLabel + '</div>' : "") +
+        (l.desc ? '<p class="lfeature__desc">' + l.desc + '</p>' : "") +
+        '<div class="lfeature__cta">' +
+          '<a class="linklike" href="' + l.href + '" target="_blank" rel="noopener">View full listing <span class="arr"></span></a>' +
+          '<a class="linklike" href="tel:7068881865">Book a showing <span class="arr"></span></a>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function gridCard(l) {
+    var t = TAGS[l.status] || TAGS.active;
+    return '<a class="lcard" href="' + l.href + '" target="_blank" rel="noopener">' +
+      '<div class="lcard__img">' +
+        '<span class="lcard__tag lcard__tag--' + t.cls + '">' + t.label + '</span>' +
+        media(l) +
+      '</div>' +
+      '<h3 class="lcard__address">' + l.address + '</h3>' +
+      (l.area ? '<div class="lcard__line2">' + l.area + '</div>' : "") +
+      '<div class="lcard__meta">' +
+        '<span class="lcard__price">' + (l.price || t.label) + '</span>' +
+        '<span class="lcard__listed">' + (l.listedLabel ? "Listed " + l.listedLabel : "View listing") + '</span>' +
+      '</div>' +
+    '</a>';
+  }
+
+  var api = window.MorganFeeds.mount({
+    onLoading: function () { panel('<p>Loading Morgan&rsquo;s current listings&hellip;</p>'); },
+    onStatus: function (text) { if (statusEl) statusEl.textContent = text; },
+    onError: function () {
+      panel('<h3>Listings are <em>a moment away</em>.</h3>' +
+        '<p>The live feed can&rsquo;t be reached right now. Call Morgan and she&rsquo;ll walk you through everything currently available.</p>' +
+        '<a class="linklike" href="tel:7068881865">Call (706) 888-1865 <span class="arr"></span></a>');
+    },
+    render: function (all) {
+      var live = all.filter(function (l) { return l.status === "active" || l.status === "pending"; }).slice(0, 6);
+      if (!live.length) {
+        panel('<h3>New listings, <em>coming soon</em>.</h3>' +
+          '<p>Nothing on the market this moment. Morgan typically takes new listings live each month &mdash; give her a call and you\'ll be the first to know.</p>' +
+          '<a class="linklike" href="tel:7068881865">Call (706) 888-1865 <span class="arr"></span></a>');
+        return;
+      }
+      mount.innerHTML = live.length === 1
+        ? featureCard(live[0])
+        : '<div class="listings__grid">' + live.map(gridCard).join("") + '</div>';
+    }
+  });
+
+  if (refreshBtn) refreshBtn.addEventListener("click", function () { api.refresh(); });
+
+  /* Reviews feed. Replaces the testimonial cards only when the feed
+     answers with reviews — otherwise the written ones stay put. */
+  var reviewsGrid = document.getElementById("reviews-grid");
+  if (reviewsGrid && window.MorganFeeds.fetchReviews) {
+    // Feed reviews run 300–1000+ characters; these cards are built for
+    // a short quote, so trim to a word boundary and let the full text
+    // live on the review site.
+    var trim = function (text, max) {
+      if (text.length <= max) return text;
+      var cut = text.slice(0, max);
+      var stop = Math.max(cut.lastIndexOf(". "), cut.lastIndexOf("! "));
+      if (stop > max * 0.55) return cut.slice(0, stop + 1);
+      return cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:\-\u2014]$/, "") + "\u2026";
+    };
+    window.MorganFeeds.fetchReviews().then(function (list) {
+      if (!list.length) return;
+      reviewsGrid.innerHTML = list.slice(0, 6).map(function (r) {
+        var body = trim(r.body, 280);
+        var quoted = /^["\u201c]/.test(body) ? body : '\u201c' + body + '\u201d';
+        return '<article class="review">' +
+          '<div class="review__top">' +
+            '<span class="review__source"><b>Verified review</b></span>' +
+            '<span class="review__stars">' + "\u2605".repeat(r.stars) + '</span>' +
+          '</div>' +
+          '<p class="review__body">' + quoted + '</p>' +
+          '<div class="review__by">' + r.who + (r.at ? ' \u00b7 ' + window.MorganFeeds.dateLabel(r.at) : "") + '</div>' +
+        '</article>';
+      }).join("");
+    }).catch(function (e) {
+      console.info("[feed:reviews] keeping the written testimonials \u2014 " + e.message);
+    });
+  }
+})();
+</script>
+
+<!-- ============== NAV SCROLL + MOBILE TOGGLE + YEAR ============== -->
+<script>
+(function () {
+  const nav = document.getElementById("masthead");
+  const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 40);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  const toggle = document.getElementById("navToggle");
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("nav-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    });
+    document.querySelectorAll("#navList a").forEach(a => {
+      a.addEventListener("click", () => {
+        nav.classList.remove("nav-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  // Dynamic copyright year, no manual update
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#083A4F" />
+<title>Buy a Home · Morgan Amos Realtor</title>
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="fonts.css" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  /* Hero, full-bleed dark */
+  .buy-hero {
+    background: var(--ink);
+    color: var(--cream);
+    padding: clamp(48px, 7vw, 130px) var(--gutter) clamp(56px, 8vw, 140px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(28px, 6vw, 100px);
+    align-items: end;
+  }
+  .buy-hero .crumbs {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(235,232,221,0.65);
+    margin-bottom: 28px;
+  }
+  .buy-hero .crumbs span { padding: 0 8px; color: var(--accent); }
+  .buy-hero h1 {
+    font-family: var(--display);
+    font-size: clamp(52px, 9.5vw, 160px);
+    line-height: 0.9;
+    margin: 0 0 24px;
+    letter-spacing: -0.005em;
+  }
+  .buy-hero h1 em { font-family: var(--serif); font-style: italic; color: var(--accent); }
+  .buy-hero .lede {
+    font-family: var(--serif);
+    font-size: clamp(18px, 1.7vw, 26px);
+    color: rgba(235,232,221,0.82);
+    max-width: 40ch;
+    margin: 0 0 28px;
+    line-height: 1.5;
+  }
+  .buy-hero__right { aspect-ratio: 3/4; position: relative; }
+  .buy-hero__right .ph { position: absolute; inset: 0; }
+  .buy-hero__right .caption {
+    position: absolute;
+    z-index: 3;
+    left: 14px; top: 14px;
+    background: var(--accent);
+    color: var(--ink);
+    padding: 10px 14px;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  @media (min-width: 901px) {
+    .buy-hero__right .caption { left: -32px; top: 32px; padding: 14px 18px; }
+  }
+  @media (max-width: 900px) { .buy-hero { grid-template-columns: 1fr; } }
+
+  /* Intro / approach */
+  .approach {
+    padding: clamp(56px, 9vw, 140px) var(--gutter);
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: clamp(28px, 6vw, 100px);
+    align-items: start;
+  }
+  .approach h2 {
+    font-family: var(--display);
+    font-size: clamp(38px, 5.4vw, 88px);
+    line-height: 0.96;
+    margin: 14px 0 0;
+    letter-spacing: 0.002em;
+  }
+  .approach h2 em { font-family: var(--serif); font-style: italic; color: var(--accent-deep); }
+  .approach__body p {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.5vw, 24px);
+    line-height: 1.55;
+    margin: 0 0 22px;
+    color: var(--ink);
+  }
+  .approach__body p:nth-child(n+2) { color: var(--ink-soft); }
+  @media (max-width: 800px) { .approach { grid-template-columns: 1fr; gap: 24px; } }
+
+  /* Timeline */
+  .timeline { background: var(--paper); padding: clamp(56px, 9vw, 140px) var(--gutter); }
+  .timeline__head {
+    text-align: center;
+    max-width: 58ch;
+    margin: 0 auto clamp(40px, 6vw, 72px);
+  }
+  .timeline__head h2 {
+    font-family: var(--display);
+    font-size: clamp(34px, 5.4vw, 80px);
+    margin: 0 0 16px;
+    line-height: 1;
+  }
+  .timeline__head h2 em { font-family: var(--serif); font-style: italic; color: var(--accent-deep); }
+  .timeline__head p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(17px, 1.4vw, 20px);
+    color: var(--ink-soft);
+  }
+  .timeline__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(2px, 0.3vw, 4px);
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid var(--hairline);
+    background: var(--hairline);
+  }
+  .tstep {
+    background: var(--cream-light);
+    padding: clamp(26px, 3vw, 40px);
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+  }
+  .tstep__n {
+    font-family: var(--display);
+    font-size: clamp(28px, 3vw, 44px);
+    line-height: 0.9;
+    color: var(--accent-deep);
+    flex-shrink: 0;
+    min-width: 1.6em;
+  }
+  .tstep__t {
+    font-family: var(--display);
+    font-size: clamp(20px, 2vw, 28px);
+    margin: 0 0 8px;
+    line-height: 1.1;
+    letter-spacing: 0.003em;
+  }
+  .tstep__b {
+    font-family: var(--serif);
+    font-size: clamp(15px, 1.2vw, 17px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  @media (max-width: 720px) { .timeline__grid { grid-template-columns: 1fr; } }
+
+  /* Reasons */
+  .reasons { padding: clamp(56px, 9vw, 140px) var(--gutter); }
+  .reasons__head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
+  .reasons__head h2 {
+    font-family: var(--display);
+    font-size: clamp(34px, 5.2vw, 80px);
+    line-height: 1;
+    margin: 0;
+  }
+  .reasons__head h2 em { font-family: var(--serif); font-style: italic; color: var(--accent-deep); }
+  .reasons__head p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(17px, 1.4vw, 19px);
+    color: var(--ink-soft);
+    max-width: 42ch;
+    margin: 0;
+  }
+  .reasons__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--hairline);
+    border-left: 1px solid var(--hairline);
+  }
+  .reason {
+    padding: clamp(28px, 3vw, 42px);
+    border-right: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .reason .n { font-family: var(--sans); font-size: 11px; letter-spacing: 0.3em; color: var(--accent-deep); }
+  .reason h3 {
+    font-family: var(--display);
+    font-size: clamp(21px, 2vw, 28px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.003em;
+  }
+  .reason p {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  @media (max-width: 900px) { .reasons__head { grid-template-columns: 1fr; gap: 16px; } .reasons__grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .reasons__grid { grid-template-columns: 1fr; } }
+
+  /* Costs */
+  .costs { background: var(--ink); color: var(--cream); padding: clamp(56px, 9vw, 140px) var(--gutter); }
+  .costs__head {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: end;
+    margin-bottom: clamp(36px, 5vw, 56px);
+  }
+  .costs__head h2 { font-family: var(--display); font-size: clamp(34px, 5.4vw, 78px); line-height: 1; margin: 0; color: var(--cream); }
+  .costs__head h2 em { font-family: var(--serif); font-style: italic; color: var(--accent); }
+  .costs__head p {
+    font-family: var(--serif); font-style: italic; font-size: clamp(16px, 1.4vw, 19px);
+    color: rgba(235,232,221,0.78); max-width: 44ch; margin: 0;
+  }
+  .costs__grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(235,232,221,0.18);
+    border-left: 1px solid rgba(235,232,221,0.18);
+  }
+  .cost {
+    padding: clamp(24px, 2.6vw, 36px);
+    border-right: 1px solid rgba(235,232,221,0.18);
+    border-bottom: 1px solid rgba(235,232,221,0.18);
+  }
+  .cost .amt { font-family: var(--display); font-size: clamp(22px, 2.4vw, 34px); line-height: 1; margin-bottom: 10px; color: var(--cream); }
+  .cost .amt em { font-family: var(--serif); font-style: italic; color: var(--accent); }
+  .cost .lab { font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(235,232,221,0.62); margin-bottom: 10px; }
+  .cost .note { font-family: var(--serif); font-size: 15px; line-height: 1.5; color: rgba(235,232,221,0.78); margin: 0; }
+  .costs__foot {
+    margin-top: clamp(32px, 4vw, 48px);
+    font-family: var(--serif); font-style: italic; font-size: clamp(16px, 1.3vw, 19px);
+    color: rgba(235,232,221,0.82); max-width: 70ch; line-height: 1.55;
+    border-left: 2px solid var(--accent); padding-left: 22px;
+  }
+  @media (max-width: 900px) { .costs__head { grid-template-columns: 1fr; gap: 14px; } .costs__grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .costs__grid { grid-template-columns: 1fr; } }
+
+  /* Testimonials */
+  .btest { padding: clamp(56px, 9vw, 140px) var(--gutter); background: var(--cream-light); }
+  .btest__head { text-align: center; margin-bottom: clamp(36px, 5vw, 56px); }
+  .btest__head h2 { font-family: var(--display); font-size: clamp(32px, 5vw, 72px); margin: 0; line-height: 1; }
+  .btest__head h2 em { font-family: var(--serif); font-style: italic; color: var(--accent-deep); }
+  .btest__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 28px); max-width: 1200px; margin: 0 auto; }
+  .btest__card {
+    background: var(--cream); padding: 30px 28px; border: 1px solid var(--hairline);
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .btest__stars { color: var(--accent); letter-spacing: 2px; font-size: 13px; }
+  .btest__body { font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.55; color: var(--ink); margin: 0; }
+  .btest__by {
+    font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-soft); margin-top: auto; padding-top: 14px; border-top: 1px solid var(--hairline);
+  }
+  @media (max-width: 900px) { .btest__grid { grid-template-columns: 1fr; } }
+
+  /* CTA */
+  .buyer-cta {
+    background: var(--ink); color: var(--cream);
+    padding: clamp(56px, 10vw, 160px) var(--gutter);
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 5vw, 60px); align-items: center;
+  }
+  .buyer-cta h2 { font-family: var(--display); font-size: clamp(40px, 7vw, 110px); line-height: 0.96; margin: 0 0 24px; text-wrap: balance; }
+  .buyer-cta h2 em { font-family: var(--serif); font-style: italic; color: var(--accent); }
+  .buyer-cta p { font-family: var(--serif); font-size: clamp(17px, 1.5vw, 21px); color: rgba(235,232,221,0.82); margin: 0 0 28px; max-width: 44ch; line-height: 1.55; }
+  .buyer-cta__form { background: var(--cream-light); color: var(--ink); padding: clamp(28px, 3.5vw, 40px) clamp(24px, 3vw, 38px); border-left: 2px solid var(--accent); }
+  .buyer-cta__form .label { font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 22px; }
+  .buyer-cta__form .field {
+    border: 0; border-bottom: 1px solid var(--hairline); background: transparent; width: 100%;
+    padding: 14px 0; font-family: var(--serif); font-size: 17px; margin-bottom: 14px; outline: none; color: var(--ink); min-height: 48px;
+  }
+  .buyer-cta__form .field::placeholder { color: var(--ink-mute); font-style: italic; }
+  .buyer-cta__form .field:focus { border-bottom-color: var(--accent); }
+  .buyer-cta__form button {
+    margin-top: 14px; width: 100%; padding: 18px 22px; background: var(--ink); color: var(--cream); border: 0;
+    font-family: var(--sans); font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; transition: background .25s var(--ease); min-height: 52px;
+  }
+  .buyer-cta__form button:hover { background: var(--accent-deep); }
+  @media (max-width: 900px) { .buyer-cta { grid-template-columns: 1fr; } }
+
+  body[data-accent="gold"] { --accent: #A58D66; --accent-deep: #8a734f; }
+  body[data-accent="navy"] { --accent: #083A4F; --accent-deep: #083A4F; }
+  body[data-accent="teal"] { --accent: #407E8C; --accent-deep: #346874; }
+</style>
+</head>
+<body data-accent="gold">
+
+<header class="masthead" id="masthead">
+  <div class="masthead__top">
+    <div class="masthead__meta masthead__brokerage">
+      <a href="https://kpdd.com" target="_blank" rel="noopener" aria-label="Coldwell Banker Kennon, Parker, Duncan &amp; Davis"><img src="uploads/coldwell-banker-kpdd.webp" alt="Coldwell Banker Kennon, Parker, Duncan &amp; Davis" /></a>
+    </div>
+    <div class="masthead__brand">
+      <a class="masthead__logo" href="index.html"><img src="uploads/morgan-logo.png" alt="Morgan Amos, Realtor&reg; — Your Home, My Priority" /></a>
+    </div>
+    <div class="masthead__right">
+      <a class="masthead__phone" href="tel:7068881865">(706) 888-1865</a>
+      <a class="masthead__cta" href="#contact">Get in touch</a>
+      <button class="masthead__menu" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="masthead__nav" id="navList">
+    <a href="index.html">Home</a>
+    <a href="meet-morgan.html">Meet Morgan</a>
+    <a href="buy.html" class="active">Buy</a>
+    <a href="sell.html">Sell</a>
+    <a href="listings.html">Listings</a>
+    <a href="index.html#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ============== HERO ============== -->
+<header class="buy-hero" data-screen-label="05 Buy · Hero">
+  <div>
+    <div class="crumbs">Home <span>/</span> Buying a home</div>
+    <h1>Buying a home<br/><em>in Columbus</em>.</h1>
+    <p class="lede">
+      Whether you're a first-time buyer, a growing family, or relocating to the area, Morgan walks alongside you from pre-approval to the keys in your hand.
+    </p>
+    <a class="linklike" href="#contact" style="color:var(--cream); border-color:var(--cream);">Start your search <span class="arr"></span></a>
+  </div>
+  <div class="buy-hero__right">
+    <div class="caption">Home at last</div>
+    <div class="ph is-photo"><img src="uploads/meet-02-family-on-porch.jpg" alt="A family at the door of their new home" /></div>
+  </div>
+</header>
+
+<!-- ============== APPROACH ============== -->
+<section class="approach" data-screen-label="05 Buy · Approach">
+  <div>
+    <div class="kicker">Her approach</div>
+    <h2>A guide for one of life's <em>biggest decisions</em>.</h2>
+  </div>
+  <div class="approach__body">
+    <p>
+      Buying a home is one of the largest decisions most people ever make. Morgan treats it that way, taking the time to understand what you need before you ever set foot in a house.
+    </p>
+    <p>
+      With over a decade as a full-time Realtor and a lifetime in Columbus, she brings honest guidance to every step, from understanding your budget to negotiating the offer and coordinating a smooth close.
+    </p>
+    <p>
+      Her job, the way she sees it, is to help you find the place you'll call home, and to make the process feel a good deal less daunting than it sounds.
+    </p>
+  </div>
+</section>
+
+<!-- ============== TIMELINE ============== -->
+<section class="timeline" data-screen-label="05 Buy · Timeline">
+  <div class="timeline__head">
+    <div class="kicker" style="justify-content:center; margin: 0 auto 18px;">The path to the keys</div>
+    <h2>Your home-buying <em>timeline</em>.</h2>
+    <p>Every purchase follows the same general path. Here's what to expect from the first conversation to closing day.</p>
+  </div>
+  <div class="timeline__grid">
+    <div class="tstep"><div class="tstep__n">01</div><div><h3 class="tstep__t">Pre-approval</h3><p class="tstep__b">Evaluate savings, credit, and budget to understand your affordability and buying power.</p></div></div>
+    <div class="tstep"><div class="tstep__n">02</div><div><h3 class="tstep__t">Start the search</h3><p class="tstep__b">Begin touring homes that fit your criteria and budget, narrowing down what matters most.</p></div></div>
+    <div class="tstep"><div class="tstep__n">03</div><div><h3 class="tstep__t">Make an offer</h3><p class="tstep__b">Submit a competitive offer with terms aligned to your interests and the current market.</p></div></div>
+    <div class="tstep"><div class="tstep__n">04</div><div><h3 class="tstep__t">Earnest money</h3><p class="tstep__b">Deposit the earnest money agreed in the contract, applied toward what's owed at closing.</p></div></div>
+    <div class="tstep"><div class="tstep__n">05</div><div><h3 class="tstep__t">Home inspection</h3><p class="tstep__b">Have a professional inspect the home for any hidden issues during the due-diligence period.</p></div></div>
+    <div class="tstep"><div class="tstep__n">06</div><div><h3 class="tstep__t">Negotiate repairs</h3><p class="tstep__b">Work through any necessary repairs with the seller before the due-diligence window closes.</p></div></div>
+    <div class="tstep"><div class="tstep__n">07</div><div><h3 class="tstep__t">Appraisal</h3><p class="tstep__b">The lender orders an appraisal to confirm the property's value and condition.</p></div></div>
+    <div class="tstep"><div class="tstep__n">08</div><div><h3 class="tstep__t">Moving preparations</h3><p class="tstep__b">Switch utilities into your name, change your mailing address, and line up a moving company.</p></div></div>
+    <div class="tstep"><div class="tstep__n">09</div><div><h3 class="tstep__t">Final walk-through</h3><p class="tstep__b">Walk the home one last time to make sure you're satisfied with its condition.</p></div></div>
+    <div class="tstep"><div class="tstep__n">10</div><div><h3 class="tstep__t">Closing &amp; possession</h3><p class="tstep__b">Sign the closing paperwork, receive the keys, and step into your new home.</p></div></div>
+  </div>
+</section>
+
+<!-- ============== REASONS ============== -->
+<section class="reasons" data-screen-label="05 Buy · Why a Buyer's Agent">
+  <div class="reasons__head">
+    <h2>Why work with <em>Morgan</em>.</h2>
+    <p>A buyer's agent costs you little and changes everything. Here's what Morgan brings to your search.</p>
+  </div>
+  <div class="reasons__grid">
+    <div class="reason"><div class="n">01</div><h3>Understanding your needs</h3><p>She works to thoroughly understand your desired features, location preferences, and budget before the search begins.</p></div>
+    <div class="reason"><div class="n">02</div><h3>Local market knowledge</h3><p>Over a decade as a full-time Realtor in the local market means sharper guidance at every turn.</p></div>
+    <div class="reason"><div class="n">03</div><h3>Search &amp; selection</h3><p>Full access to the MLS, so you see what's truly on the market, not just what's easy to find online.</p></div>
+    <div class="reason"><div class="n">04</div><h3>Neighborhood expertise</h3><p>A lifelong Columbus local with insight into schools, amenities, and the feel of each community.</p></div>
+    <div class="reason"><div class="n">05</div><h3>Offers &amp; negotiation</h3><p>A skilled negotiator who knows real-estate contracts and advocates for your best interests.</p></div>
+    <div class="reason"><div class="n">06</div><h3>Closing coordination</h3><p>She coordinates lenders, inspectors, appraisers, and attorneys to keep your close on track.</p></div>
+  </div>
+</section>
+
+<!-- ============== TESTIMONIALS ============== -->
+<section class="btest" data-screen-label="05 Buy · Testimonials">
+  <div class="btest__head">
+    <h2>From buyers who <em>found home</em>.</h2>
+  </div>
+  <div class="btest__grid">
+    <article class="btest__card">
+      <span class="btest__stars">★★★★★</span>
+      <p class="btest__body">"We went into the home-buying experience with zero knowledge and Morgan helped us find homes within our budget that met our needs. With Morgan, we didn't just get an agent, we got a friend."</p>
+      <div class="btest__by">Michael &amp; Jessica Nolin</div>
+    </article>
+    <article class="btest__card">
+      <span class="btest__stars">★★★★★</span>
+      <p class="btest__body">"Morgan walked us through each step and was very informative. She was so patient as we made decisions and always gave us the best advice. An absolute joy to work with."</p>
+      <div class="btest__by">Josh &amp; Anne Hughes</div>
+    </article>
+    <article class="btest__card">
+      <span class="btest__stars">★★★★★</span>
+      <p class="btest__body">"From the very beginning she was on top of everything we needed and wanted. She listened and helped us find a home we love. Thoughtful, diligent, and empathetic."</p>
+      <div class="btest__by">Andrew &amp; Landy Cartledge</div>
+    </article>
+  </div>
+</section>
+
+<!-- ============== FINAL CTA ============== -->
+<section class="buyer-cta" id="contact" data-screen-label="05 Buy · Contact">
+  <div>
+    <div class="kicker" style="color:rgba(235,232,221,0.65);">Ready to start?</div>
+    <h2>Let's find <em>your home</em>.</h2>
+    <p>
+      Tell Morgan a little about what you're looking for and your timeline. She'll reach out to start the conversation, no pressure.
+    </p>
+    <div style="font-family: var(--display); font-size: clamp(26px, 4vw, 36px); line-height: 1.1; letter-spacing: 0.01em;">
+      <a href="tel:7068881865" style="border-bottom: 1px solid var(--cream); padding-bottom: 6px; display: inline-block; white-space: nowrap;">(706) 888-1865</a>
+    </div>
+    <p style="font-family: var(--serif); font-style: italic; font-size: 17px; margin-top: 18px; color: rgba(235,232,221,0.75);">
+      <a href="mailto:morgan.amos@kpdd.com" style="border-bottom: 1px solid rgba(235,232,221,0.4); padding-bottom: 2px;">morgan.amos@kpdd.com</a>
+    </p>
+  </div>
+
+  <form class="buyer-cta__form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thank you, Morgan will be in touch.'; this.querySelector('button').disabled=true;">
+    <div class="label">Tell Morgan what you're looking for</div>
+    <input class="field" type="text" placeholder="Your name" required />
+    <input class="field" type="tel" placeholder="Phone or email" required />
+    <input class="field" type="text" placeholder="Areas or neighborhoods you like" />
+    <input class="field" type="text" placeholder="Price range &amp; timeline (optional)" />
+    <button type="submit">Start the conversation</button>
+  </form>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="footer">
+  <div class="cols">
+    <div class="brand">
+      <div class="logo-slot footer-logo has-art"><img src="uploads/morgan-logo-cream.png" alt="Morgan Amos, Realtor&reg;" /></div>
+      <p>REALTOR&reg; &middot; Coldwell Banker KPDD, Columbus, Georgia. Licensed in Georgia &amp; Alabama.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/morganamosrealtor" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/morganamosrealtor" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.5 8.2V6.6c0-.8.2-1.2 1.3-1.2h1.5V2.6C16.9 2.5 16 2.4 15 2.4c-2.4 0-4 1.5-4 4.1v1.7H8.4V11H11v10.6h3.5V11h2.6l.4-2.8z"/></svg></a>
+        <a href="https://share.google/FKAKElppMwVY8f7nb" target="_blank" rel="noopener" aria-label="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.2v3.9h5.4c-.24 1.4-1.7 4.1-5.4 4.1-3.25 0-5.9-2.7-5.9-6s2.65-6 5.9-6c1.85 0 3.1.79 3.8 1.47l2.6-2.5C16.7 2.99 14.6 2 12 2 6.95 2 2.9 6.05 2.9 11.1S6.95 20.2 12 20.2c5.05 0 8.4-3.55 8.4-8.55 0-.57-.06-1-.14-1.45H12z"/></svg></a>
+        <a href="https://www.zillow.com/profile/morganamos" target="_blank" rel="noopener" aria-label="Zillow"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2 3 8.3v2.55l3.05-2.05 2.45 3.05L3 15.5v6.3h18v-6.6l-6.05-3.6 2.6-3.25L21 10.85V8.3L12 2.2zm0 9.05 4.3 2.55v5.6H7.7v-5.35L12 11.25z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="meet-morgan.html">Meet Morgan</a></li>
+        <li><a href="buy.html">Buying a home</a></li>
+        <li><a href="sell.html">Selling a home</a></li>
+        <li><a href="listings.html">Active listings</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="tel:7068881865">(706) 888-1865</a></li>
+        <li><a href="mailto:morgan.amos@kpdd.com">morgan.amos@kpdd.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Brokerage</h5>
+      <div class="brokerage">
+        <div class="logo-slot cb-logo has-art"><img src="uploads/coldwell-banker-kpdd-white.png" alt="Coldwell Banker Kennon, Parker, Duncan & Davis" /></div>
+        <div class="office"><b>Office</b>Coldwell Banker KPDD<br/>5670 Whitesville Road<br/>Columbus, GA 31904</div>
+        <div class="office"><b>Office phone</b><a href="tel:7062561000">(706) 256-1000</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© <span id="year">2026</span> Morgan Amos Realtor</span>
+    <span><span class="eh">≡</span> &nbsp; Equal Housing Opportunity · GA 366248 · AL 138291</span>
+  </div>
+</footer>
+
+<!-- ============== MOBILE STICKY CALL BAR ============== -->
+<div class="callbar" aria-hidden="false">
+  <a href="tel:7068881865" class="primary">
+    <span class="ic">☎</span><span>Call Morgan</span>
+  </a>
+  <a href="sms:7068881865" class="ghost">
+    <span class="ic">✉</span><span>Text</span>
+  </a>
+</div>
+
+<script>
+  const nav = document.getElementById("masthead");
+  const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 40);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  const toggle = document.getElementById("navToggle");
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("nav-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    });
+    document.querySelectorAll("#navList a").forEach(a => {
+      a.addEventListener("click", () => {
+        nav.classList.remove("nav-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
+  const a = localStorage.getItem("morgan-accent");
+  if (a) document.body.setAttribute("data-accent", a);
+</script>
+
+</body>
+</html>

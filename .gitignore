@@ -1,0 +1,8 @@
+# OS + editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Nothing here is built, so there is no build output to ignore.
