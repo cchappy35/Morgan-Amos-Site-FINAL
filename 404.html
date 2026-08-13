@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#E5E1DD" />
+<title>Page Not Found · Morgan Amos, Realtor®</title>
+<meta name="robots" content="noindex, follow" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<style>
+  /* Self-contained: a 404 can be served from any path, so this page carries
+     its own type and tokens rather than relying on relative stylesheets. */
+  @font-face { font-family: "Cormorant Garamond"; src: url("/fonts/CormorantGaramond-400-latin.woff2") format("woff2"), url("fonts/CormorantGaramond-400-latin.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Cormorant Garamond"; src: url("/fonts/CormorantGaramond-400i-latin.woff2") format("woff2"), url("fonts/CormorantGaramond-400i-latin.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+  @font-face { font-family: "Cormorant Garamond"; src: url("/fonts/CormorantGaramond-500-latin.woff2") format("woff2"), url("fonts/CormorantGaramond-500-latin.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Inter"; src: url("/fonts/Inter-400-latin.woff2") format("woff2"), url("fonts/Inter-400-latin.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Inter"; src: url("/fonts/Inter-500-latin.woff2") format("woff2"), url("fonts/Inter-500-latin.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+
+  :root {
+    --cream: #ebe8dd;
+    --cream-light: #f4f2ec;
+    --ink: #344f62;
+    --ink-soft: #45616f;
+    --ink-mute: #6c8593;
+    --hairline: #d3cec4;
+    --accent: #344f62;
+    --display: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+    --sans: "Inter", system-ui, sans-serif;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--cream-light);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--ink-mute); }
+
+  .bar {
+    border-bottom: 1px solid var(--hairline);
+    padding: 20px clamp(18px, 4vw, 72px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .bar img { height: 34px; width: auto; display: block; }
+  .bar .tel {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(56px, 10vw, 130px) clamp(18px, 4vw, 72px);
+  }
+  .inner { max-width: 680px; text-align: center; }
+  .code {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin: 0 0 28px;
+  }
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(44px, 8vw, 104px);
+    line-height: 0.98;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    margin: 0 0 26px;
+    text-wrap: balance;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  p.lead {
+    font-family: var(--display);
+    font-size: clamp(18px, 1.6vw, 23px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 auto 40px;
+    max-width: 46ch;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px 26px;
+    border-top: 1px solid var(--hairline);
+    padding-top: 30px;
+  }
+  .links a {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 10px 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .links a:hover { color: var(--ink); }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 40px;
+    padding: 16px 26px;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    min-height: 48px;
+    transition: gap .25s var(--ease), background .25s var(--ease);
+  }
+  .cta:hover { background: var(--ink-soft); color: var(--cream); gap: 18px; }
+  .cta .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--cream); }
+  footer {
+    border-top: 1px solid var(--hairline);
+    padding: 22px clamp(18px, 4vw, 72px);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    justify-content: space-between;
+  }
+</style>
+
+<!-- Google Analytics 4 — swap both G-XXXXXXXXXX for the real Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="/"><img src="/uploads/morgan-logo.png" onerror="this.onerror=null; this.src='uploads/morgan-logo.png';" alt="Morgan Amos, Realtor® — Your Home, My Priority" /></a>
+  <a class="tel" href="tel:+17068881865">(706) 888-1865</a>
+</div>
+
+<main>
+  <div class="inner">
+    <p class="code">Error 404</p>
+    <h1>This page isn't <em>on the market</em>.</h1>
+    <p class="lead">
+      The link you followed has moved or never existed. Everything else is still right where you'd expect &mdash; or call Morgan and she'll point you to it herself.
+    </p>
+    <a class="cta" href="/"><span class="dot"></span><span>Back to the homepage</span></a>
+    <div class="links">
+      <a href="/meet-morgan">Meet Morgan</a>
+      <a href="/buy">Buying</a>
+      <a href="/sell">Selling</a>
+      <a href="/listings">Listings</a>
+      <a href="/reviews">Reviews</a>
+      <a href="mailto:morgan.amos@kpdd.com">Email Morgan</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>© <span id="year">2026</span> Morgan Amos Realtor · Coldwell Banker Kennon &amp; Parker</span>
+  <span>Equal Housing Opportunity · GA 366248 · AL 138291</span>
+</footer>
+
+<script>
+  var y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

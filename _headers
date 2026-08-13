@@ -1,0 +1,49 @@
+# Cloudflare Pages header rules.
+
+# Self-hosted fonts never change once published.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Photos change only when replaced.
+/uploads/*
+  Cache-Control: public, max-age=604800
+
+# The social share image is stable; social crawlers cache it hard anyway.
+/og-share.png
+  Cache-Control: public, max-age=604800
+
+# Always re-check the pages, the stylesheets and the scripts, so a new
+# deploy or a new listing shows up immediately.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/feeds.js
+  Cache-Control: public, max-age=0, must-revalidate
+/forms.js
+  Cache-Control: public, max-age=0, must-revalidate
+/shared.css
+  Cache-Control: public, max-age=0, must-revalidate
+/mobile.css
+  Cache-Control: public, max-age=0, must-revalidate
+/reviews-data.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  # Force HTTPS for a year. Add `; preload` only once you're certain every
+  # subdomain of morganamosrealtor.com is HTTPS — preload is hard to undo.
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), midi=(), magnetometer=(), accelerometer=()
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  X-Permitted-Cross-Domain-Policies: none
+  # Content Security Policy.
+  #   script-src  'unsafe-inline' is required: the pages carry inline
+  #               scripts (nav toggle, listing render, year stamp), and
+  #               gtag.js is loaded from googletagmanager.
+  #   connect-src kpdd.com is the live listing RSS; api.web3forms.com is
+  #               the lead-form relay; the analytics hosts are GA4.
+  #   img-src     https: is deliberately broad — listing photos come from
+  #               whatever CDN the brokerage feed points at.
+  #   form-action allows the Web3Forms endpoint as well as same-origin.
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.googletagmanager.com; connect-src 'self' https://kpdd.com https://*.kpdd.com https://api.web3forms.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; form-action 'self' https://api.web3forms.com; frame-src 'self'; upgrade-insecure-requests

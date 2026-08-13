@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#083A4F" />
+<title>Client Reviews · Morgan Amos, Realtor® · Columbus, GA</title>
+<meta name="description" content="194 verified client reviews for Morgan Amos, Realtor® in Columbus, Georgia — from Zillow and Google. Read what buyers and sellers say about working with her." />
+<link rel="canonical" href="https://morganamosrealtor.com/reviews" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="author" content="Morgan Amos" />
+<meta name="geo.region" content="US-GA" />
+<meta name="geo.placename" content="Columbus, Georgia" />
+
+<!-- Social share preview -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Morgan Amos, Realtor®" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://morganamosrealtor.com/reviews" />
+<meta property="og:title" content="194 client reviews · Morgan Amos, Realtor®" />
+<meta property="og:description" content="Verified reviews from Zillow and Google, spanning eleven years of buyers and sellers across Columbus, Georgia." />
+<meta property="og:image" content="https://morganamosrealtor.com/og-share.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Morgan Amos, Realtor® — Columbus, Georgia" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="194 client reviews · Morgan Amos, Realtor®" />
+<meta name="twitter:description" content="Verified reviews from Zillow and Google, spanning eleven years of buyers and sellers across Columbus, Georgia." />
+<meta name="twitter:image" content="https://morganamosrealtor.com/og-share.png" />
+<meta name="twitter:image:alt" content="Morgan Amos, Realtor® — Columbus, Georgia" />
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="fonts.css" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .rv-hero {
+    background: var(--ink);
+    color: var(--cream);
+    padding: clamp(44px, 6vw, 110px) var(--gutter) clamp(40px, 5vw, 92px);
+  }
+  .rv-hero .crumbs {
+    font-family: var(--sans); font-size: 11px; letter-spacing: .26em;
+    text-transform: uppercase; color: rgba(235,232,221,.65); margin-bottom: 26px;
+  }
+  .rv-hero .crumbs span { padding: 0 8px; color: var(--sage); }
+  .rv-hero .crumbs a { color: inherit; text-decoration: none; }
+  .rv-hero .crumbs a:hover { color: var(--sage); }
+  .rv-hero h1 {
+    font-family: var(--display);
+    font-size: clamp(48px, 8.5vw, 140px);
+    line-height: .9; margin: 0 0 22px; letter-spacing: -.005em;
+  }
+  .rv-hero h1 em { font-family: var(--serif); font-style: italic; color: var(--sage); }
+  .rv-hero .lede {
+    font-family: var(--serif); font-size: clamp(17px, 1.6vw, 25px);
+    color: rgba(235,232,221,.82); max-width: 46ch; margin: 0; line-height: 1.5;
+  }
+  .rv-tally {
+    display: flex; flex-wrap: wrap; gap: clamp(24px, 5vw, 72px);
+    margin-top: clamp(32px, 4vw, 56px);
+    padding-top: clamp(26px, 3vw, 40px);
+    border-top: 1px solid rgba(235,232,221,.22);
+  }
+  .rv-tally div { display: flex; flex-direction: column; gap: 6px; }
+  .rv-tally .num {
+    font-family: var(--display); font-size: clamp(38px, 4.6vw, 68px);
+    line-height: 1; color: var(--cream);
+  }
+  .rv-tally .num em { font-family: var(--serif); font-style: italic; color: var(--sage); font-size: .6em; }
+  .rv-tally .lbl {
+    font-family: var(--sans); font-size: 10.5px; letter-spacing: .22em;
+    text-transform: uppercase; color: rgba(235,232,221,.62);
+  }
+
+  /* ---- Controls ---- */
+  .rv-controls {
+    position: sticky; top: 0; z-index: 40;
+    background: var(--cream);
+    border-bottom: 1px solid var(--hairline);
+    padding: 16px var(--gutter);
+    display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  }
+  .rv-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .rv-group > .cap {
+    font-family: var(--sans); font-size: 10px; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--ink-mute); margin-right: 2px;
+  }
+  .rv-chip {
+    font-family: var(--sans); font-size: 11.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 500;
+    padding: 9px 15px; min-height: 38px;
+    display: inline-flex; align-items: center; gap: 7px;
+    background: transparent; color: var(--ink-soft);
+    border: 1px solid var(--hairline); border-radius: 999px;
+    cursor: pointer; transition: all .25s var(--ease);
+  }
+  .rv-chip:hover { border-color: var(--accent); color: var(--accent-deep); }
+  .rv-chip[aria-pressed="true"] {
+    background: var(--ink); border-color: var(--ink); color: var(--cream);
+  }
+  .rv-chip .n { font-size: 10px; opacity: .6; font-variant-numeric: tabular-nums; }
+  .rv-count {
+    margin-left: auto; font-family: var(--sans); font-size: 11px;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--ink-mute);
+  }
+
+  /* ---- Grid ---- */
+  .rv-wrap { padding: clamp(34px, 5vw, 72px) var(--gutter) clamp(50px, 7vw, 110px); }
+  .rv-grid { columns: 3; column-gap: clamp(16px, 2vw, 28px); }
+  @media (max-width: 1000px) { .rv-grid { columns: 2; } }
+  @media (max-width: 640px)  { .rv-grid { columns: 1; } }
+
+  .rv-card {
+    break-inside: avoid; -webkit-column-break-inside: avoid; page-break-inside: avoid;
+    background: var(--cream-light);
+    border: 1px solid var(--hairline);
+    border-top: 3px solid var(--accent);
+    padding: 26px 24px 22px;
+    margin-bottom: clamp(16px, 2vw, 28px);
+    display: inline-block; width: 100%;
+    transition: border-color .3s var(--ease), transform .3s var(--ease);
+  }
+  .rv-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .rv-card__top {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 10px; margin-bottom: 14px;
+  }
+  .rv-card__src {
+    font-family: var(--sans); font-size: 10px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--ink-mute);
+  }
+  .rv-card__src b { color: var(--accent-deep); font-weight: 600; }
+  .rv-card__stars { color: var(--accent); letter-spacing: 2px; font-size: 13px; }
+  .rv-card__body {
+    font-family: var(--serif); font-size: 17px; line-height: 1.62;
+    color: var(--ink); font-style: italic; margin: 0 0 14px;
+  }
+  .rv-card__body .rest { display: none; }
+  .rv-card.is-open .rv-card__body .rest { display: inline; }
+  .rv-card.is-open .rv-card__body .ell { display: none; }
+  .rv-more {
+    font-family: var(--sans); font-size: 10.5px; letter-spacing: .18em;
+    text-transform: uppercase; font-weight: 500;
+    background: none; border: none; padding: 4px 0; margin: 0 0 12px;
+    color: var(--accent-deep); cursor: pointer;
+    border-bottom: 1px solid var(--accent); transition: opacity .2s var(--ease);
+  }
+  .rv-more:hover { opacity: .62; }
+  .rv-card__by {
+    font-family: var(--sans); font-size: 10.5px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--ink-soft);
+    border-top: 1px solid var(--hairline); padding-top: 13px;
+    display: flex; flex-wrap: wrap; gap: 4px 8px;
+  }
+  .rv-card__by .sep { color: var(--taupe); }
+  .rv-card__by .anon { font-style: italic; text-transform: none; letter-spacing: .04em; font-size: 11.5px; }
+
+  .rv-empty {
+    font-family: var(--serif); font-size: 20px; font-style: italic;
+    color: var(--ink-mute); padding: 60px 0; text-align: center;
+    column-span: all;
+  }
+  .rv-chip[disabled] {
+    opacity: .34; cursor: not-allowed; border-color: var(--hairline);
+    color: var(--ink-mute); background: transparent;
+  }
+  .rv-chip[disabled]:hover { border-color: var(--hairline); color: var(--ink-mute); }
+  .rv-more-btn { display: flex; justify-content: center; margin-top: clamp(28px, 4vw, 48px); }
+  .rv-loadmore {
+    font-family: var(--sans); font-size: 11px; letter-spacing: .22em;
+    text-transform: uppercase; font-weight: 500;
+    background: var(--ink); color: var(--cream);
+    border: 1px solid var(--ink); border-radius: 999px;
+    padding: 16px 34px; min-height: 48px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: background .3s var(--ease), color .3s var(--ease);
+  }
+  .rv-loadmore:hover { background: transparent; color: var(--ink); }
+  .rv-loadmore .arr::after { content: "\2192"; }
+  .rv-loadmore[hidden] { display: none; }
+
+  .rv-note {
+    font-family: var(--sans); font-size: 11px; letter-spacing: .04em;
+    color: var(--ink-mute); line-height: 1.7; max-width: 70ch;
+    margin: clamp(30px, 4vw, 54px) auto 0; text-align: center;
+  }
+  .rv-note a { color: var(--accent-deep); }
+
+  @media (max-width: 700px) {
+    .rv-controls { gap: 12px; padding: 13px var(--gutter); }
+    .rv-count { width: 100%; margin-left: 0; order: 3; }
+    .rv-card__body { font-size: 16.5px; }
+  }
+
+  body[data-accent="gold"] { --accent: #A58D66; --accent-deep: #8a734f; }
+  body[data-accent="navy"] { --accent: #083A4F; --accent-deep: #083A4F; }
+  body[data-accent="teal"] { --accent: #407E8C; --accent-deep: #346874; }
+</style>
+<link rel="stylesheet" href="mobile.css" />
+
+<!-- Google Analytics 4 — swap both G-XXXXXXXXXX for the real Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+</head>
+<body data-accent="gold">
+
+<header class="masthead" id="masthead">
+  <div class="masthead__top">
+    <div class="masthead__meta masthead__brokerage">
+      <a href="https://kpdd.com" target="_blank" rel="noopener" aria-label="Coldwell Banker Kennon &amp; Parker"><img src="uploads/coldwell-banker-kennon-parker.png" alt="Coldwell Banker Kennon &amp; Parker" /></a>
+    </div>
+    <div class="masthead__brand">
+      <a class="masthead__logo" href="index.html"><img src="uploads/morgan-logo.png" alt="Morgan Amos, Realtor&reg; — Your Home, My Priority" /></a>
+    </div>
+    <div class="masthead__right">
+      <a class="masthead__phone" href="tel:+17068881865">(706) 888-1865</a>
+      <a class="masthead__cta" href="#contact">Get in touch</a>
+      <button class="masthead__menu" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="masthead__nav" id="navList">
+    <a href="index.html">Home</a>
+    <a href="meet-morgan.html">Meet Morgan</a>
+    <a href="buy.html">Buy</a>
+    <a href="sell.html">Sell</a>
+    <a href="listings.html">Listings</a>
+    <a href="reviews.html" class="active">Reviews</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<header class="rv-hero" data-screen-label="06 Reviews · Hero">
+  <div class="crumbs"><a href="index.html">Home</a> <span>/</span> Client reviews</div>
+  <h1>What her clients<br/><em>actually say</em>.</h1>
+  <p class="lede">
+    Every review below was left by a real client on Zillow or Google.
+  </p>
+  <div class="rv-tally">
+    <div><span class="num" id="tallyTotal">194</span><span class="lbl">Client reviews</span></div>
+    <div><span class="num" id="tallyAvg">5.0</span><span class="lbl">Average rating</span></div>
+    <div><span class="num">11<em>yrs</em></span><span class="lbl">Serving Columbus</span></div>
+  </div>
+</header>
+
+<div class="rv-controls" id="rvControls">
+  <div class="rv-group" role="group" aria-label="Filter by source">
+    <span class="cap">Source</span>
+    <button class="rv-chip" data-filter="source" data-value="all" aria-pressed="true">All</button>
+    <button class="rv-chip" data-filter="source" data-value="Zillow" aria-pressed="false">Zillow <span class="n"></span></button>
+    <button class="rv-chip" data-filter="source" data-value="Google" aria-pressed="false">Google <span class="n"></span></button>
+  </div>
+  <div class="rv-group" role="group" aria-label="Filter by transaction">
+    <span class="cap">Type</span>
+    <button class="rv-chip" data-filter="cat" data-value="all" aria-pressed="true">All</button>
+    <button class="rv-chip" data-filter="cat" data-value="buyer" aria-pressed="false">Buyers <span class="n"></span></button>
+    <button class="rv-chip" data-filter="cat" data-value="seller" aria-pressed="false">Sellers <span class="n"></span></button>
+  </div>
+  <div class="rv-count" id="rvCount">Showing 194 reviews</div>
+</div>
+
+<main class="rv-wrap">
+  <div class="rv-grid" id="rvGrid"></div>
+  <div class="rv-more-btn"><button class="rv-loadmore" id="rvLoad" type="button">Load more reviews <span class="arr"></span></button></div>
+  <p class="rv-note">
+    Reviews are collected from Morgan's public
+    <a href="https://www.zillow.com/profile/morganamos" target="_blank" rel="noopener">Zillow profile</a> and
+    <a href="https://maps.google.com/?cid=530375951008160785" target="_blank" rel="noopener">Google Business Profile</a>.
+    Some Zillow reviewers post under a username rather than their name; those appear as verified clients.
+  </p>
+</main>
+
+<footer class="footer">
+  <div class="cols">
+    <div class="brand">
+      <div class="logo-slot footer-logo has-art"><img src="uploads/morgan-logo-cream.png" alt="Morgan Amos, Realtor&reg;" /></div>
+      <p>REALTOR&reg; &middot; Coldwell Banker Kennon &amp; Parker, Columbus, Georgia. Licensed in Georgia &amp; Alabama.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/morganamosrealtor" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/morganamosrealtor" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.5 8.2V6.6c0-.8.2-1.2 1.3-1.2h1.5V2.6C16.9 2.5 16 2.4 15 2.4c-2.4 0-4 1.5-4 4.1v1.7H8.4V11H11v10.6h3.5V11h2.6l.4-2.8z"/></svg></a>
+        <a href="https://maps.google.com/?cid=530375951008160785" target="_blank" rel="noopener" aria-label="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.2v3.9h5.4c-.24 1.4-1.7 4.1-5.4 4.1-3.25 0-5.9-2.7-5.9-6s2.65-6 5.9-6c1.85 0 3.1.79 3.8 1.47l2.6-2.5C16.7 2.99 14.6 2 12 2 6.95 2 2.9 6.05 2.9 11.1S6.95 20.2 12 20.2c5.05 0 8.4-3.55 8.4-8.55 0-.57-.06-1-.14-1.45H12z"/></svg></a>
+        <a href="https://www.zillow.com/profile/morganamos" target="_blank" rel="noopener" aria-label="Zillow"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2 3 8.3v2.55l3.05-2.05 2.45 3.05L3 15.5v6.3h18v-6.6l-6.05-3.6 2.6-3.25L21 10.85V8.3L12 2.2zm0 9.05 4.3 2.55v5.6H7.7v-5.35L12 11.25z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="meet-morgan.html">Meet Morgan</a></li>
+        <li><a href="buy.html">Buying a home</a></li>
+        <li><a href="sell.html">Selling a home</a></li>
+        <li><a href="listings.html">Active listings</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="tel:+17068881865">(706) 888-1865</a></li>
+        <li><a href="mailto:morgan.amos@kpdd.com">morgan.amos@kpdd.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Brokerage</h5>
+      <div class="brokerage">
+        <div class="logo-slot cb-logo has-art"><img src="uploads/coldwell-banker-kennon-parker-white.png" alt="Coldwell Banker Kennon &amp; Parker" /></div>
+        <div class="office"><b>Office</b>Coldwell Banker Kennon &amp; Parker<br/>5670 Whitesville Road<br/>Columbus, GA 31904</div>
+        <div class="office"><b>Office phone</b><a href="tel:+17062561000">(706) 256-1000</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© <span id="year">2026</span> Morgan Amos Realtor</span>
+    <span><span class="eh">≡</span> &nbsp; Equal Housing Opportunity · GA 366248 · AL 138291</span>
+  </div>
+</footer>
+
+<!-- ============== MOBILE STICKY CALL BAR ============== -->
+<div class="callbar" aria-hidden="false">
+  <a href="tel:+17068881865" class="primary">
+    <span class="ic">☎</span><span>Call Morgan</span>
+  </a>
+  <a href="sms:+17068881865" class="ghost">
+    <span class="ic">✉</span><span>Text</span>
+  </a>
+</div>
+
+<script>
+  const nav = document.getElementById("masthead");
+  const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 40);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  const toggle = document.getElementById("navToggle");
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("nav-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    });
+    document.querySelectorAll("#navList a").forEach(a => {
+      a.addEventListener("click", () => {
+        nav.classList.remove("nav-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
+  const a = localStorage.getItem("morgan-accent");
+  if (a) document.body.setAttribute("data-accent", a);
+</script>
+
+<script src="reviews-data.js"></script>
+<script>
+(function () {
+  // Newest first. Zillow rows carry an exact date; Google rows only a relative
+  // one ("a year ago"), resolved to mid-month at build time — close enough to order by.
+  var ALL = (window.MORGAN_REVIEWS || []).slice().sort(function (a, b) { return b.t - a.t; });
+  var PAGE = 24, shown = PAGE;
+  var state = { source: "all", cat: "all" };
+  var grid = document.getElementById("rvGrid");
+  var countEl = document.getElementById("rvCount");
+  var loadBtn = document.getElementById("rvLoad");
+
+  document.getElementById("tallyTotal").textContent = ALL.length;
+  var avg = ALL.reduce(function (s, r) { return s + r.r; }, 0) / ALL.length;
+  document.getElementById("tallyAvg").textContent = avg.toFixed(1);
+
+  function hits(source, cat) {
+    return ALL.filter(function (r) {
+      if (source !== "all" && r.s !== source) return false;
+      if (cat === "buyer" && !(r.c === "buyer" || r.c === "both")) return false;
+      if (cat === "seller" && !(r.c === "seller" || r.c === "both")) return false;
+      return true;
+    }).length;
+  }
+
+  // Counts are computed against the other axis' current selection, so a chip
+  // never advertises a number the next tap can't deliver.
+  function syncChips() {
+    document.querySelectorAll(".rv-chip").forEach(function (chip) {
+      var f = chip.dataset.filter, v = chip.dataset.value;
+      var n = f === "source" ? hits(v, state.cat) : hits(state.source, v);
+      var slot = chip.querySelector(".n");
+      if (slot) slot.textContent = n;
+      var dead = n === 0 && chip.getAttribute("aria-pressed") !== "true";
+      chip.disabled = dead;
+      chip.setAttribute("aria-disabled", dead ? "true" : "false");
+    });
+  }
+
+  function matches(r) {
+    if (state.source !== "all" && r.s !== state.source) return false;
+    if (state.cat === "buyer" && !(r.c === "buyer" || r.c === "both")) return false;
+    if (state.cat === "seller" && !(r.c === "seller" || r.c === "both")) return false;
+    return true;
+  }
+  function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  // Split at a word boundary so long reviews collapse without cutting mid-word.
+  function split(text, max) {
+    if (text.length <= max) return [text, ""];
+    var cut = text.slice(0, max), i = cut.lastIndexOf(" ");
+    if (i < max * 0.6) i = max;
+    return [text.slice(0, i).replace(/[,;:\-\u2014]$/, ""), text.slice(i)];
+  }
+  function card(r) {
+    var parts = split(r.b, 260), head = parts[0], rest = parts[1];
+    var by = [];
+    by.push(r.a
+      ? '<span class="anon">' + esc(r.n) + "</span>"
+      : "<span>" + esc(r.n) + "</span>");
+    if (r.l) by.push('<span class="sep">&middot;</span><span>' + esc(r.l) + "</span>");
+    if (r.d) by.push('<span class="sep">&middot;</span><span>' + esc(r.d) + "</span>");
+    return '<article class="rv-card">' +
+      '<div class="rv-card__top">' +
+        '<span class="rv-card__src"><b>' + esc(r.s) + "</b></span>" +
+        '<span class="rv-card__stars" aria-label="' + r.r + ' out of 5 stars">' + "\u2605".repeat(r.r) + "</span>" +
+      "</div>" +
+      '<p class="rv-card__body">\u201c' + esc(head) +
+        (rest ? '<span class="ell">\u2026</span><span class="rest">' + esc(rest) + "</span>" : "") +
+      "\u201d</p>" +
+      (rest ? '<button class="rv-more" type="button">Read more</button>' : "") +
+      '<div class="rv-card__by">' + by.join("") + "</div>" +
+    "</article>";
+  }
+
+  function draw() {
+    var list = ALL.filter(matches);
+    grid.innerHTML = list.length
+      ? list.slice(0, shown).map(card).join("")
+      : '<p class="rv-empty">No reviews match those filters.</p>';
+    countEl.textContent = "Showing " + Math.min(shown, list.length) + " of " + list.length + " review" + (list.length === 1 ? "" : "s");
+    loadBtn.hidden = shown >= list.length;
+    syncChips();
+  }
+
+  grid.addEventListener("click", function (e) {
+    var btn = e.target.closest(".rv-more");
+    if (!btn) return;
+    var c = btn.closest(".rv-card");
+    var open = c.classList.toggle("is-open");
+    btn.textContent = open ? "Show less" : "Read more";
+  });
+
+  document.getElementById("rvControls").addEventListener("click", function (e) {
+    var chip = e.target.closest(".rv-chip");
+    if (!chip || chip.disabled) return;
+    var f = chip.dataset.filter;
+    state[f === "source" ? "source" : "cat"] = chip.dataset.value;
+    document.querySelectorAll('[data-filter="' + f + '"]').forEach(function (b) {
+      b.setAttribute("aria-pressed", b === chip ? "true" : "false");
+    });
+    shown = PAGE;
+    draw();
+  });
+
+  loadBtn.addEventListener("click", function () { shown += PAGE; draw(); });
+  draw();
+})();
+</script>
+
+</body>
+</html>
+

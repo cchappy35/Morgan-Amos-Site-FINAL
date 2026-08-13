@@ -1,0 +1,568 @@
+/* =========================================================
+   Morgan Amos Realtor — RESPONSIVE OVERRIDES
+   Load AFTER shared.css and after each page's inline <style>.
+
+   Two independent blocks, neither of which touches the other:
+
+     @media (max-width: 767px)   the mobile layout
+     @media (min-width: 768px)   desktop vertical rhythm (tightening
+                                 only — no colours, type or structure)
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+  /* ---------- 1. MASTHEAD — one 68px sticky row ----------
+     Hamburger left · Morgan + Coldwell Banker centered at equal
+     26px height (brokerage prominence rule) · call button right. */
+
+  .masthead__top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    padding: 12px 60px;
+    position: relative;
+    min-height: 68px;
+    overflow: hidden;
+  }
+  .masthead.scrolled .masthead__top { padding: 12px 60px; }
+
+  .masthead__brand { order: 1; flex: 0 1 auto; min-width: 0; max-width: 168px; gap: 0; }
+  .masthead__logo { max-width: 100%; }
+  .masthead__logo img,
+  .masthead.scrolled .masthead__logo img {
+    height: auto;
+    max-height: 26px;
+    max-width: 100%;
+    width: auto;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  /* Re-show the brokerage mark (shared.css hides .masthead__meta ≤860) */
+  .masthead__meta.masthead__brokerage {
+    display: flex;
+    order: 2;
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 120px;
+    width: auto;
+    padding-left: 11px;
+    border-left: 1px solid var(--hairline);
+  }
+  .masthead__brokerage img,
+  .masthead.scrolled .masthead__brokerage img {
+    height: auto;
+    max-height: 26px;
+    max-width: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+  .masthead__cb { max-width: 100%; width: auto; }
+  .masthead__brokerage a { max-width: 100%; }
+
+  /* .masthead__right is absolutely positioned on desktop, which would make
+     it the containing block for the menu button — flatten it so both the
+     hamburger and the call button anchor to .masthead__top instead. */
+  .masthead__right { display: contents; }
+
+  .masthead__menu {
+    display: inline-flex;
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+  }
+
+  /* Phone link becomes a 44px circular call button */
+  .masthead__phone {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    font-size: 0;
+  }
+  .masthead__phone::before { content: "☎"; font-size: 15px; color: var(--ink); }
+
+  /* Drawer links: 52px targets */
+  .masthead__nav a { padding: 0 24px; min-height: 52px; display: flex; align-items: center; }
+
+  /* ---------- 2. HERO — photo band, then copy on solid navy ----------
+     .hero__left / .hero__right are flattened with display:contents so the
+     eyebrow, headline, tagline, sub-copy, CTAs and socials become direct
+     children of .hero and can be ordered into one column.
+
+     The portrait gets its own 400px band at the top with NO text over it —
+     that keeps her face completely clear and shows head-to-torso instead of
+     a tight crop. The copy sits below on flat navy, so every glyph renders
+     crisp against a solid colour instead of fighting a photo. */
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    position: relative;
+    padding: 0;
+    gap: 0;
+    min-height: 0;
+    background: var(--ink);
+    text-align: left;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 400px;
+    background-image: url("uploads/home-01-hero-portrait.jpg");
+    background-size: cover;
+    background-position: center 12%;
+    background-color: var(--ink);
+    z-index: 0;
+  }
+  /* short fade blending the photo into the navy copy block */
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 300px 0 auto 0;
+    height: 100px;
+    z-index: 1;
+    background: linear-gradient(180deg,
+      rgba(40,64,79,0) 0%,
+      rgba(40,64,79,.55) 55%,
+      var(--ink) 100%);
+    pointer-events: none;
+  }
+
+  .hero__left,
+  .hero__left > div,
+  .hero__right { display: contents; }
+  .hero__medallion { display: none; }
+
+  .hero__eyebrow,
+  .hero__headline,
+  .hero__meta,
+  .hero__sub,
+  .hero__row,
+  .hero__social {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    width: auto;
+    max-width: none;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  /* --- on flat navy, below the photo --- */
+
+  .hero__eyebrow {
+    order: 1;
+    margin: 400px 24px 16px;
+    padding: 0;
+    width: auto;
+    max-width: none;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 7px;
+    background: none;
+    border-radius: 0;
+    color: rgba(235,232,221,.78);
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+  .hero__eyebrow .star { color: var(--gold-bright); letter-spacing: 1px; font-size: 10px; }
+  .hero__eyebrow .sep  { color: rgba(235,232,221,.4); }
+
+  .hero__headline {
+    order: 2;
+    font-size: 52px;
+    line-height: .92;
+    letter-spacing: -.01em;
+    margin-bottom: 16px;
+    color: var(--cream);
+  }
+  .hero__headline em { color: var(--gold-bright); }
+
+  .hero__meta {
+    order: 3;
+    padding-bottom: 30px;
+    /* the desktop rule offsets this panel with top:-49px — reset it */
+    top: 0;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .hero__meta .quote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.35;
+    color: rgba(235,232,221,.86);
+    border-left: 2px solid var(--gold-bright);
+    padding-left: 14px;
+    max-width: 34ch;
+    text-wrap: pretty;
+  }
+
+  /* --- on cream, in the thumb zone --- */
+
+  .hero__sub {
+    order: 4;
+    background: var(--cream);
+    padding-top: 22px;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .hero__row {
+    order: 5;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding-top: 18px;
+  }
+  .hero__cta {
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 24px;
+    background: var(--ink);
+    color: var(--cream);
+    border: 0;
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .hero__cta .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--gold-bright); }
+  .hero__note {
+    margin: 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    text-align: left;
+  }
+  .hero__note b { border-bottom: 1px solid var(--ink); font-style: normal; font-weight: 500; }
+
+  .hero__social {
+    order: 6;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-top: 14px;
+    padding-bottom: 22px;
+  }
+  .hero__social .lab { display: none; }
+  .hero__social a {
+    width: 44px; height: 44px;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--ink-soft);
+  }
+  .hero__social a svg { width: 17px; height: 17px; }
+
+  /* ---------- 3. STATS — one bar across ---------- */
+
+  .marquee {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    padding: 22px 16px;
+    overflow: visible;
+  }
+  .marquee .stat { text-align: center; padding: 0 6px; }
+  .marquee .stat + .stat { border-left: 1px solid rgba(235,232,221,.16); }
+  .marquee .stat__num { font-size: 27px; line-height: 1; margin-bottom: 8px; }
+  .marquee .stat__num em { font-size: .85em; }
+  .marquee .stat:last-child .stat__num { font-size: 22px; white-space: nowrap; }
+  .marquee .stat__label {
+    font-size: 9px;
+    letter-spacing: .12em;
+    line-height: 1.35;
+  }
+
+  /* ---------- 4. SECTION RHYTHM — 24px gutters ---------- */
+
+  .section { padding: 48px 24px; }
+  .section-title { font-size: 34px; line-height: 1.02; margin-bottom: 16px; }
+  .kicker { margin-bottom: 14px; font-size: 10.5px; }
+  .linklike { min-height: 44px; }
+  .service .linklike,
+  .story .linklike,
+  .reviews__foot .linklike {
+    align-self: flex-start;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  /* Story: image, then copy */
+  .story { display: block; }
+  .story__media { margin-bottom: 26px; }
+  .story__media .ph { aspect-ratio: 4/5; }
+  .story__copy h2 { font-size: 38px; line-height: 1; margin: 0 0 18px; }
+  .story__copy .lead { font-size: 18px; line-height: 1.6; }
+  .story__copy p { font-size: 17px; line-height: 1.6; }
+
+  /* Pullquote */
+  .pullquote { padding: 52px 24px; }
+  .pullquote__text { font-size: 26px; line-height: 1.22; }
+  .pullquote__mark { font-size: 230px; top: -46px; left: -14px; }
+
+  /* ---------- 5. REVIEWS — swipe carousel ---------- */
+
+  .reviews__head { display: block; margin-bottom: 22px; }
+  .reviews__head .section-title { font-size: 33px; line-height: 1.02; }
+  .reviews__head .src {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 14px;
+    line-height: 1.7;
+  }
+  .reviews__head .src .star { flex: none; }
+
+  .reviews__grid {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 24px;
+    margin: 0 -24px;
+    padding: 0 24px 4px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .reviews__grid::-webkit-scrollbar { display: none; }
+  .reviews__grid .review {
+    flex: 0 0 290px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+  }
+  .reviews__grid .review__body { font-size: 16.5px; line-height: 1.55; }
+  .reviews__foot {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  /* ---------- 6. SERVICES — stacked ---------- */
+
+  .services { display: block; }
+  .service { padding: 52px 24px; gap: 22px; }
+  .service__h { font-size: 44px; line-height: .98; }
+  .service__body { font-size: 17px; line-height: 1.6; }
+
+  /* ---------- 7. LISTINGS — swipe carousel + real button ---------- */
+
+  .listings__head { display: block; }
+  .listings__head .ml { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px; }
+  .feed-refresh { min-height: 44px; padding: 0 16px; }
+
+  .listings__grid {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 24px;
+    margin: 0 -24px;
+    padding: 0 24px 4px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .listings__grid::-webkit-scrollbar { display: none; }
+  .listings__grid .lcard { flex: 0 0 270px; scroll-snap-align: start; }
+  .listings__grid .lcard__img .ph { aspect-ratio: 4/5; }
+
+  /* Button above the "Source · Coldwell Banker Kennon & Parker" line */
+  .listings__foot {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--hairline);
+  }
+  .listings__foot .linklike {
+    order: -1;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--ink);
+    color: var(--cream);
+    border: 0;
+    border-radius: 999px;
+    padding: 0 20px;
+    font-size: 12px;
+    letter-spacing: .2em;
+  }
+  .listings__foot .src { text-align: center; }
+
+  /* Buy/Sell page feature card */
+  .lfeature__cta { flex-direction: column; align-items: stretch; gap: 10px; }
+  .lfeature__cta .linklike {
+    min-height: 50px;
+    justify-content: center;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    padding: 0 20px;
+  }
+
+  /* ---------- 8. FINALE — phone as a real button ---------- */
+
+  .finale { padding: 56px 24px; }
+  .finale h2 { font-size: 44px; line-height: .96; }
+  .finale__promise { font-size: 17px; line-height: 1.5; }
+  .finale__phone {
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 999px;
+    font-size: 24px;
+    margin: 0 0 12px;
+  }
+  .finale__or { margin-top: 6px; }
+  .finale__social a { width: 44px; height: 44px; }
+
+  /* ---------- 9. FOOTER — stacked, 46px rows ---------- */
+
+  .footer { padding: 48px 24px 0; }
+  .footer .cols { grid-template-columns: 1fr; gap: 32px; padding-bottom: 32px; }
+  .footer ul { gap: 0; }
+  .footer ul li a { min-height: 46px; display: flex; align-items: center; font-size: 17.5px; }
+  .footer ul li + li a { border-top: 1px solid rgba(235,232,221,.12); }
+  .footer .bottom { flex-direction: column; align-items: flex-start; gap: 12px; font-size: 10px; }
+  .footer .brokerage .office a { min-height: 44px; display: inline-flex; align-items: center; }
+
+  /* Header logo links: keep the marks at 26px but give the tap area 44px */
+  .masthead__logo,
+  .masthead__brokerage a { min-height: 44px; align-items: center; }
+
+  /* ---------- 10. FORMS — 52px fields ---------- */
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  select,
+  textarea {
+    min-height: 52px;
+    font-size: 16px; /* prevents iOS zoom-on-focus */
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   DESKTOP / TABLET — vertical rhythm only
+   Sections were carrying up to ~130px of padding each, so a
+   section boundary stacked ~300px of empty space (worst case:
+   listings bottom + finale top). These pull the bands in by
+   roughly a third. Nothing but padding/margin changes.
+   ========================================================= */
+
+@media (min-width: 768px) {
+
+  /* Shared section shell — was clamp(56px, 9vw, 140px) */
+  .section { padding: clamp(52px, 6vw, 92px) var(--gutter); }
+
+  /* Big centred CTA — was clamp(72px, 12vw, 180px) */
+  .finale { padding: clamp(60px, 7vw, 104px) var(--gutter); }
+
+  /* Pull-quote band — was clamp(64px, 10vw, 160px) */
+  .pullquote { padding: clamp(60px, 7vw, 108px) var(--gutter); }
+
+  /* Buy / Sell split panels — was clamp(52px, 7vw, 110px) */
+  .service { padding: clamp(48px, 5.5vw, 88px) clamp(24px, 4vw, 64px); }
+
+  /* Stat bar — was clamp(40px, 5vw, 64px) */
+  .marquee { padding: clamp(36px, 4vw, 56px) var(--gutter); }
+
+  /* Footer — was clamp(56px, 8vw, 110px) */
+  .footer { padding: clamp(52px, 6vw, 88px) var(--gutter) 0; }
+  .footer .cols { padding-bottom: clamp(28px, 3vw, 44px); }
+
+  /* Feed footer sat 64px below the cards */
+  .listings__foot { margin-top: clamp(32px, 3.5vw, 44px); }
+
+  /* Hero bottom band — was clamp(48px, 7vw, 100px) */
+  .hero { padding-bottom: clamp(44px, 5vw, 76px); }
+
+  /* Section-header blocks across the site */
+  .listings__head,
+  .reviews__head { margin-bottom: clamp(28px, 3vw, 44px); }
+
+  /* Seam collapse: the listings section and the finale share the same
+     --cream-light background, so their stacked padding read as one huge
+     void rather than a section break. Keep one band, not two. */
+  .section--cream-light + .finale { padding-top: clamp(8px, 1vw, 18px); }
+}
+
+
+/* ---------- 8. REVIEWS PAGE ---------- */
+@media (max-width: 700px) {
+  .rv-hero { padding: 30px var(--gutter) 34px; }
+  .rv-hero h1 { font-size: 44px; }
+  .rv-hero .lede { font-size: 17px; }
+  .rv-tally { gap: 20px 30px; margin-top: 26px; padding-top: 22px; }
+  .rv-tally .num { font-size: 34px; }
+
+  /* Chip rows scroll sideways instead of stacking into a tall sticky bar */
+  .rv-controls {
+    padding: 11px 0 11px var(--gutter);
+    gap: 9px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .rv-group {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-right: var(--gutter);
+  }
+  .rv-group::-webkit-scrollbar { display: none; }
+  .rv-group > .cap { flex: none; }
+  .rv-chip { flex: none; }
+  .rv-count { order: 0; padding-right: var(--gutter); font-size: 10px; }
+
+  .rv-wrap { padding: 26px var(--gutter) 44px; }
+  .rv-card { padding: 22px 20px 18px; }
+  .rv-loadmore { width: 100%; justify-content: center; }
+}
