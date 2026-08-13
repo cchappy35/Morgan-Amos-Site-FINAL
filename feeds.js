@@ -32,12 +32,13 @@
   "use strict";
 
   const BASE = "https://kpdd.com/agents/morganamos/";
-  const FEEDS = {
-    active: BASE + "active.rss",
-    pending: BASE + "pending.rss",
-    closed: BASE + "closed.rss",
-    reviews: BASE + "reviews.rss",
-  };
+  const NAMES = ["active", "pending", "closed", "reviews"];
+
+  // Each feed is tried same-origin first (functions/feed/[name].js proxies
+  // kpdd.com server-side, so CORS never applies), then direct as a fallback
+  // for any host without Pages Functions.
+  const FEEDS = {};
+  NAMES.forEach(function (n) { FEEDS[n] = ["/feed/" + n, BASE + n + ".rss"]; });
 
   const TIMEOUT_MS = 15000;
   const REFRESH_MS = 5 * 60 * 1000;
@@ -103,7 +104,7 @@
       area: parts.join(",").trim(),
       price: price,
       desc: clean(tagText(item, "description", "summary", "content")),
-      href: link || "#",
+      href: link || BASE,
       imgSrc: /^https?:\/\//i.test(img) ? img : "",
       listedAt: listedAt,
       listedLabel: dateLabel(listedAt),
@@ -139,12 +140,7 @@
 
   /* ---------- fetching ---------- */
 
-  // Plain direct fetch. Resolves [] for a genuinely empty feed
-  // (pending is empty right now — that's real feed state, not an error).
-  async function fetchFeed(name) {
-    const url = FEEDS[name];
-    if (!url) throw new Error("unknown feed " + name);
-
+  async function fetchOnce(url) {
     const ctl = new AbortController();
     const timer = setTimeout(() => ctl.abort(), TIMEOUT_MS);
     try {
@@ -160,6 +156,25 @@
     } finally {
       clearTimeout(timer);
     }
+  }
+
+  // Resolves [] for a genuinely empty feed (pending may be empty right now —
+  // that's real feed state, not an error). Tries the same-origin proxy, then
+  // the direct URL; only rejects when every route fails.
+  async function fetchFeed(name) {
+    const urls = FEEDS[name];
+    if (!urls) throw new Error("unknown feed " + name);
+
+    let lastErr;
+    for (let i = 0; i < urls.length; i++) {
+      try {
+        return await fetchOnce(urls[i]);
+      } catch (err) {
+        lastErr = err;
+        console.info("[feed:" + name + "] " + urls[i] + " \u2192 " + err.message);
+      }
+    }
+    throw lastErr || new Error("no route to feed " + name);
   }
 
   // Actives + pendings + closed, each tagged with the feed it came

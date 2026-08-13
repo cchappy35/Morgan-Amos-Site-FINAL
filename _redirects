@@ -20,14 +20,4 @@
 # them, and a skipped rule is a silent 404.
 /contact           /                301
 
-# --- Legacy Squarespace URLs (added 2026-08-13, from the old sitemap) ---
-# Squarespace used /meetmorgan with no hyphen.
-/meetmorgan            /meet-morgan   301
-# Old combined services page; new site splits this into /buy and /sell,
-# so send visitors to the homepage to choose.
-/real-estate-services  /   301
-# Unused Squarespace template demo content.
-/video-library         /   301
-/video-library/*       /   301
-
 # Anything unmatched falls through to 404.html.

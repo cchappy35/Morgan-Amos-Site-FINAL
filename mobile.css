@@ -89,9 +89,31 @@
     height: 44px;
     border: 1px solid var(--hairline);
     border-radius: 999px;
+    padding: 0;
+    /* The number itself is still in the markup for accessibility and for
+       tel: semantics, so it is collapsed rather than removed. */
     font-size: 0;
+    letter-spacing: 0;
+    text-indent: 0;
+    line-height: 1;
+    overflow: hidden;
   }
-  .masthead__phone::before { content: "☎"; font-size: 15px; color: var(--ink); }
+  /* Absolutely positioned so the collapsed number text node cannot act as a
+     sibling flex item and push the glyph off-centre. */
+  .masthead__phone::before {
+    content: "☎";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    font-size: 15px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-indent: 0;
+    color: var(--ink);
+  }
 
   /* Drawer links: 52px targets */
   .masthead__nav a { padding: 0 24px; min-height: 52px; display: flex; align-items: center; }
