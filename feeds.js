@@ -104,7 +104,7 @@
       area: parts.join(",").trim(),
       price: price,
       desc: clean(tagText(item, "description", "summary", "content")),
-      href: link || "#",
+      href: link || BASE,
       imgSrc: /^https?:\/\//i.test(img) ? img : "",
       listedAt: listedAt,
       listedLabel: dateLabel(listedAt),
