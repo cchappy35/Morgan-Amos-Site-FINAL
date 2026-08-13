@@ -1,23 +1,19 @@
 # Cloudflare Pages redirects.
 #
-# IMPORTANT — do not add rules mapping a clean path to its .html file
-# (e.g. `/buy /buy.html 200`). Pages already serves buy.html at /buy AND
-# 308-redirects /buy.html → /buy by itself. Adding the reverse rule makes
-# the two bounce off each other: ERR_TOO_MANY_REDIRECTS on every page.
-#
-# Only genuine aliases belong here, and their targets are extensionless.
+# Pretty URLs: /buy → buy.html, etc. Pages serves these automatically,
+# but the explicit rules make the canonical form unambiguous.
 
-/home              /                301
-/index             /                301
-/meet              /meet-morgan     301
-/about             /meet-morgan     301
-/buying            /buy             301
-/selling           /sell            301
-/active-listings   /listings        301
-/testimonials      /reviews         301
+/home              /index.html          301
+/meet              /meet-morgan.html    301
+/about             /meet-morgan.html    301
+/meet-morgan       /meet-morgan.html    200
+/buy               /buy.html            200
+/buying            /buy.html            301
+/sell              /sell.html           200
+/selling           /sell.html           301
+/listings          /listings.html       200
+/reviews           /reviews.html        200
+/testimonials      /reviews.html        301
+/active-listings   /listings.html       301
 
-# No fragment destinations (`/#contact`) — Pages does not reliably support
-# them, and a skipped rule is a silent 404.
-/contact           /                301
-
-# Anything unmatched falls through to 404.html.
+# Anything unmatched falls through to the Pages 404.
