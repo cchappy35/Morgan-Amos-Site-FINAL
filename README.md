@@ -338,3 +338,32 @@ stays empty, output directory stays `/`.
 
 Sanity check after deploy: `https://<your-domain>/feed/active` should return
 raw RSS in the browser.
+
+
+## Reviews — editable from a Google Sheet
+
+`reviews.html` now loads its reviews from a published Google Sheet, so new
+reviews are added by editing the sheet — no redeploy.
+
+Setup (once): create a sheet at sheets.new, File → Import →
+`reviews-import.csv` from this folder (all 194 current reviews,
+pre-formatted), then File → Share → **Publish to web** → the sheet tab as
+**CSV** → paste the published URL into the top of `reviews-sheet.js` and
+redeploy.
+
+How it behaves:
+
+- The built-in `reviews-data.js` renders instantly; the sheet copy replaces
+  it in place when it arrives. If the sheet is unpublished, mistyped, or
+  Google is down, the built-in copy simply stays — the page can never be empty.
+- Tallies, average rating and the filter-chip counts recompute from the sheet.
+- Google refreshes a published CSV within ~5 minutes of an edit; visitors
+  fetch it uncached on every page view.
+- Column reference is documented at the top of `reviews-sheet.js`. Row 1 must
+  remain the header row; column order doesn't matter.
+- "Publish to web" makes the sheet's CONTENT public at an unguessable URL.
+  These are already public reviews, so nothing sensitive is exposed — but
+  don't add private columns (emails, phone numbers) to that tab.
+
+The CSP `connect-src` gained `docs.google.com` and `*.googleusercontent.com`
+(the published-CSV endpoint redirects there).

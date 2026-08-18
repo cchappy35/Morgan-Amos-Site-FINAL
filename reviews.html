@@ -361,6 +361,7 @@
 </script>
 
 <script src="reviews-data.js"></script>
+<script src="reviews-sheet.js"></script>
 <script>
 (function () {
   // Newest first. Zillow rows carry an exact date; Google rows only a relative
@@ -468,6 +469,18 @@
 
   loadBtn.addEventListener("click", function () { shown += PAGE; draw(); });
   draw();
+
+  // reviews-sheet.js replaces window.MORGAN_REVIEWS when the Google Sheet
+  // loads; re-sort, re-tally and redraw in place.
+  window.addEventListener("morgan-reviews-updated", function () {
+    ALL = (window.MORGAN_REVIEWS || []).slice().sort(function (a, b) { return b.t - a.t; });
+    if (!ALL.length) return;
+    document.getElementById("tallyTotal").textContent = ALL.length;
+    var avg = ALL.reduce(function (s, r) { return s + r.r; }, 0) / ALL.length;
+    document.getElementById("tallyAvg").textContent = avg.toFixed(1);
+    shown = PAGE;
+    draw();
+  });
 })();
 </script>
 
