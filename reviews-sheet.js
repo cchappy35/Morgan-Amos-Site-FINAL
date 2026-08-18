@@ -30,6 +30,15 @@ var REVIEWS_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQi
 (function () {
   if (REVIEWS_SHEET_CSV_URL.indexOf("https://") !== 0) return;
 
+  // Last successful sheet load, cached locally: applied synchronously here
+  // (this script runs before the page's render script), so repeat visitors
+  // see the sheet's numbers on first paint instead of a built-in→sheet flash.
+  var CACHE_KEY = "morgan-reviews-cache-v1";
+  try {
+    var cached = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
+    if (cached && cached.length) window.MORGAN_REVIEWS = cached;
+  } catch (e) { /* corrupt or unavailable storage — built-in data stands */ }
+
   // RFC-4180 CSV parser: handles quoted fields, embedded commas,
   // escaped quotes and newlines inside a review body.
   function parseCSV(text) {
@@ -103,6 +112,7 @@ var REVIEWS_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQi
       var list = rows.slice(1).map(function (r) { return toReview(head, r); })
         .filter(function (r) { return r.n && r.b; });
       if (!list.length) throw new Error("no usable rows");
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify(list)); } catch (e) {}
       window.MORGAN_REVIEWS = list;
       window.dispatchEvent(new CustomEvent("morgan-reviews-updated"));
       console.info("[reviews] loaded " + list.length + " from Google Sheet");

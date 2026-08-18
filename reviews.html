@@ -471,13 +471,28 @@
   draw();
 
   // reviews-sheet.js replaces window.MORGAN_REVIEWS when the Google Sheet
-  // loads; re-sort, re-tally and redraw in place.
+  // loads; re-sort, re-tally and redraw in place. The tally counts up from
+  // the old number instead of snapping, so a late sheet load reads as a
+  // deliberate tick (194 → 195 → 196) rather than a glitch.
+  function countTo(el, target, format) {
+    var from = parseFloat(el.textContent) || 0;
+    if (from === target) { el.textContent = format(target); return; }
+    var t0 = performance.now(), dur = 700, settled = false;
+    (function tick(now) {
+      var p = Math.min((now - t0) / dur, 1);
+      p = 1 - Math.pow(1 - p, 3); // ease-out
+      el.textContent = format(from + (target - from) * p);
+      if (p < 1) requestAnimationFrame(tick); else settled = true;
+    })(t0);
+    // rAF is paused in background tabs — guarantee the final value regardless.
+    setTimeout(function () { if (!settled) el.textContent = format(target); }, dur + 150);
+  }
   window.addEventListener("morgan-reviews-updated", function () {
     ALL = (window.MORGAN_REVIEWS || []).slice().sort(function (a, b) { return b.t - a.t; });
     if (!ALL.length) return;
-    document.getElementById("tallyTotal").textContent = ALL.length;
     var avg = ALL.reduce(function (s, r) { return s + r.r; }, 0) / ALL.length;
-    document.getElementById("tallyAvg").textContent = avg.toFixed(1);
+    countTo(document.getElementById("tallyTotal"), ALL.length, function (v) { return Math.round(v); });
+    countTo(document.getElementById("tallyAvg"), avg, function (v) { return v.toFixed(1); });
     shown = PAGE;
     draw();
   });
